@@ -1,0 +1,85 @@
+<?php
+
+use yii\helpers\Html;
+use yii\widgets\DetailView;
+use yii\widgets\Block;
+
+use yii\bootstrap\Tabs;
+
+/**
+ * @var yii\web\View $this
+ * @var app\modules\parties\models\Party $model
+ */
+
+$this->title = Html::encode($model->organisationName);
+$this->params['breadcrumbs'][] = ['label' => 'Parties', 'url' => ['index']];
+$this->params['breadcrumbs'][] = $this->title;
+
+$modalJS = <<<MODALJS
+$('#window_party_edit').on('click',myModalWindow);
+$.fn.modal.Constructor.prototype.enforceFocus = function() {};
+
+MODALJS;
+$this->registerJs($modalJS);
+
+?>
+
+<?php Block::begin(array('id'=>'toolbar')); ?>
+
+	<?= $this->render('blocks/block_system', [
+		'model' => $model,
+	]); ?>
+
+<?php Block::end(); ?>
+
+<?php Block::begin(array('id'=>'sidebar')); ?>
+
+<p>
+	<?php echo Html::a('Delete', ['delete', 'id' => $model->id], [
+		'class' => 'btn btn-danger',
+		'data-confirm' => Yii::t('app', 'Are you sure to delete this item?'),
+		'data-method' => 'post',
+	]); ?>
+</p>
+
+<?php Block::end(); ?>
+
+<div class="party-view">	
+
+	<h1><?= Html::encode($this->title) ?></h1>	
+
+<div class="nav navbar-default" role="navigation">
+	<?php echo Html::a(\Yii::t('app','Edit'), ['window', 'id' => $model->id, 'win'=>'party_update','mainid'=>$model->id], [
+		'class' => 'btn btn-info navbar-btn navbar-right',
+		'id' => 'window_party_edit'
+	]); ?>
+</div>
+
+	<?php echo DetailView::widget([
+		'model' => $model,
+		'attributes' => [
+			'organisationName',
+			'partyNote:ntext',
+			'taxNumber',
+			'registrationNumber',
+			'countryName',
+			'party_type'
+		],
+	]); ?>	
+
+<?php echo Tabs::widget([
+ 'items' => [
+	 [
+		 'label' => 'Contacts',
+		 'content' => $this->render('blocks/block_contact', ['model' => $model]),
+		 'active' => true
+	 ],
+	 [
+		 'label' => 'Adresses',
+		 'content' => $this->render('blocks/block_address', ['model' => $model]),		 
+	 ]	 
+	]
+]);
+?>
+
+</div>

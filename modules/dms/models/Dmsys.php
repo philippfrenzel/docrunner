@@ -1,0 +1,204 @@
+<?php
+
+namespace app\modules\dms\models;
+use \DateTime;
+
+/**
+ * This is the model class for table "tbl_dmsys".
+ *
+ * @property integer $id
+ * @property integer $parent
+ * @property integer $owner_id
+ * @property string $source_path
+ * @property integer $source_security
+ * @property string $used_space
+ * @property integer $time_expired
+ * @property string $status
+ * @property string $filename
+ * @property string $filetype
+ * @property integer $dms_module 
+ * @property integer $dms_id 
+ * @property integer $creator_id
+ * @property integer $time_deleted
+ * @property integer $time_create
+ */
+class Dmsys extends \yii\db\ActiveRecord
+{
+
+ /**
+  * @var const MODULE_TIMETABLE
+  * is used for managing workflow
+  */
+  const MODULE_TIMETABLE   = 1;
+  const MODULE_PRINTREPORT = 2;
+  const MODULE_CMS         = 3;
+  const MODULE_BLOG        = 4;
+  const MODULE_TASKS       = 5;
+  const MODULE_REVISION    = 6;
+  const MODULE_HOLIDAY     = 7;
+  const MODULE_PURCHASE    = 8;
+
+  public static $appmodules = array(
+      self::MODULE_TIMETABLE   => '/timetrack/timetrack',
+      self::MODULE_PRINTREPORT => '/printreport',
+      self::MODULE_CMS         => '/pages/page',
+      self::MODULE_BLOG        => '/post',
+      self::MODULE_TASKS       => '/tasks/default',
+      self::MODULE_REVISION    => '/revision/default',
+      self::MODULE_HOLIDAY     => '/timetrack/timetrack',
+      self::MODULE_PURCHASE    => '/purchase/purchase-order/update',
+  );
+
+  public static $appinternals = array(
+      self::MODULE_TIMETABLE => array('table'=>'tbl_time_table','field'=>'category'),
+      self::MODULE_HOLIDAY => array('table'=>'tbl_time_table','field'=>'category'),
+      self::MODULE_TASKS => array('table'=>'tbl_task','field'=>'content'),
+      self::MODULE_PURCHASE => array('table'=>'tbl_purchaseorder','field'=>'status'),
+  );
+
+  public static function getModuleOptions(){
+      return self::$appmodules;
+  }
+
+  public static function getModuleInternals(){
+      return self::$appinternals;
+  }
+
+  /**
+   * Returns a string representation of the model's module table name
+   *
+   * @return string The module table name of this workflow as a string
+   */
+  public static function getModuleAsString($id=NULL)
+  {
+      $options = self::getModuleOptions();
+      if(!is_null($id))
+          return isset($options[$id]) ? $options[$id] : '';
+      return 'Unknown';
+  }
+
+  /**
+   * Returns a string representation of the model's module table name
+   *
+   * @return string The module table name of this workflow as a string
+   */
+  public static function getModuleAsController($id)
+  {
+      $options = self::getModuleOptions();
+      if(isset($options[$id])){ 
+          $cleanme = $options[$id];
+          //cut table shortcut
+          $cleanme = str_replace(\Yii::$app->db->tablePrefix, '', $cleanme);
+          $cleanme = implode('',explode('_',$cleanme));
+          return $cleanme;
+      }
+      return 'site';
+  }
+
+
+	public $fileattachement = NULL;
+	/**
+	 * @inheritdoc
+	 */
+	public static function tableName()
+	{
+		return 'tbl_dmsys';
+	}
+
+	/**
+	 * @inheritdoc
+	 */
+	public function rules()
+	{
+		return [
+			['fileattachement', 'file', 'types'=>'pdf,jpeg,png,jpg,xls,ppt,doc,txt,bmp', 'skipOnEmpty' => false],
+			[['parent', 'owner_id', 'source_security', 'time_expired', 'dms_module','dms_id','creator_id', 'time_deleted', 'time_create'], 'integer'],
+			[['dms_module','dms_id'], 'required'],
+      [['filetype'], 'string', 'max' => 40],
+			[['source_path','filename'], 'string', 'max' => 255],
+			[['used_space', 'status'], 'string', 'max' => 200]
+		];
+	}
+
+	/**
+	 * @inheritdoc
+	 */
+	public function attributeLabels()
+	{
+		return [
+			'id'              => \Yii::t('app','ID'),
+			'parent'          => \Yii::t('app','Parent'),
+			'owner_id'        => \Yii::t('app','Owner'),
+			'source_path'     => \Yii::t('app','Source Path'),
+			'source_security' => \Yii::t('app','Source Security'),
+			'used_space'      => \Yii::t('app','Used Space'),
+			'time_expired'    => \Yii::t('app','Time Expired'),
+			'status'          => \Yii::t('app','Status'),
+      'filename'        => \Yii::t('app','Filename'),
+      'filetype'        => \Yii::t('app','Filetype'),
+			'dms_module'      => \Yii::t('app','Module'),
+			'dms_id'          => \Yii::t('app','Module ID'),
+			'creator_id'      => \Yii::t('app','Creator'),
+			'time_deleted'    => \Yii::t('app','Time Deleted'),
+			'time_create'     => \Yii::t('app','Time Create'),
+		];
+	}
+
+	 /**
+    * @return query to get the workflow logs for a special entry
+    * @param integer the id of the module - workflow table - see static params from Workflow Model
+    * @param integer the primarey key value of the record within the linked table
+    */
+    public static function getAdapterForFiles($module,$id)
+    {
+      return static::find()->where('dms_module = '.$module.' AND dms_id = '.$id);
+    }
+
+    /**
+     * [getReadableFileSize description]
+     * @param  [type] $retstring [description]
+     * @return [type]            [description]
+     */
+    public function getReadableFileSize($size,$retstring = null) {
+      // adapted from code at http://aidanlister.com/repos/v/function.size_readable.php
+      $sizes = array('bytes', 'kB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB');
+
+      if ($retstring === null) { $retstring = '%01.2f %s'; }
+
+      $lastsizestring = end($sizes);
+
+      foreach ($sizes as $sizestring) {
+              if ($size < 1024) { break; }
+              if ($sizestring != $lastsizestring) { $size /= 1024; }
+      }
+      if ($sizestring == $sizes[0]) { $retstring = '%01d %s'; } // Bytes aren't normally fractional
+      return sprintf($retstring, $size, $sizestring);
+    }
+
+  /**
+   * [beforeSave description]
+   * @param  [type] $insert [description]
+   * @return [type]         [description]
+   */
+  public function beforeSave($insert)
+  {
+    $date = new DateTime('now');
+    if($this->isNewRecord)
+    {
+      if(\Yii::$app->user->isGuest)
+      {
+        $this->creator_id = 0; //external system writer
+      }
+      else
+      {
+        $this->creator_id = \Yii::$app->user->identity->id;
+      }      
+    }
+    if(is_null($this->time_create))
+    {
+      $this->time_create = $date->format("U");
+    }
+    return parent::beforeSave($insert);
+  }
+
+}

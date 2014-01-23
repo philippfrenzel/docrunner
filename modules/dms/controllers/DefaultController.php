@@ -1,0 +1,104 @@
+<?php
+
+namespace app\modules\dms\controllers;
+
+use app\modules\dms\models\Dmsys;
+use yii\web\Controller;
+use yii\web\VerbFilter;
+
+use yii\helpers\Json;
+use yii\helpers\FileHelper;
+use yii\web\UploadedFile;
+
+
+class DefaultController extends Controller
+{
+  public function behaviors()
+  {
+    return [
+      'verbs' => [
+        'class' => VerbFilter::className(),
+        'actions' => [
+          'delete' => ['post'],
+        ],
+      ],
+      'AccessControl' => [
+        'class' => '\yii\web\AccessControl',
+        'rules' => [
+          [
+            'allow'=>true,
+            'actions'=>array('index','form','attachfile','downloadattachement'),
+            'roles'=>array('@'),
+          ]
+        ]
+      ]
+    ];
+  } 	
+
+  public function actionIndex()
+	{
+		return $this->render('index');
+	}
+
+  public function actionForm()
+  {
+      $model = new Dmsys;
+
+      if ($model->load($_POST)) {
+          $model->attachement=UploadedFile::getInstance($model,'attachement');
+          if ($model->validate()) {
+              // form inputs are valid, do something here
+              return;
+          }
+      }
+      return $this->render('_form', [
+          'model' => $model,
+      ]);
+  }
+
+  public function actionAttachfile(){
+    $model = new Dmsys;
+    if($model->load($_POST)) {
+        $model->fileattachement=UploadedFile::getInstance($model,'fileattachement');
+        if ($model->validate()) {
+            $model->filename = $model->fileattachement->name;
+            $model->filetype = $model->fileattachement->type;
+            $model->used_space = $model->getReadableFileSize($model->fileattachement->size);
+            
+            //create dir if not exists
+            $FHelper = new FileHelper;
+            $FHelper->createDirectory(\Yii::$app->basePath."/attachements/".$model->dms_module);
+
+            if($model->save() && $model->fileattachement->saveAs(\Yii::$app->basePath."/attachements/".$model->dms_module."/".$model->id))
+            {
+              return $this->redirect([$model::getModuleAsController($model->dms_module), 'id' => $model->dms_id]);
+            }
+            else
+            {
+              echo "upload failed";
+            }
+        }
+        exit;
+    }
+    return $this->render('_form', [
+        'model' => $model,
+    ]);
+  }
+
+  public function actionDownloadattachement($id){
+    $model = Dmsys::find($id);
+
+    // open the file in a binary mode
+    $name = \Yii::$app->basePath."/attachements/".$model->dms_module."/".$model->id;
+    $fp = fopen($name, 'rb');
+
+    // send the right headers
+    header("Content-Type: ".$model->filetype);
+    header("Content-Length: " . filesize($name));
+
+    // dump the picture and stop the script
+    fpassthru($fp);
+    exit;
+  }
+
+}
