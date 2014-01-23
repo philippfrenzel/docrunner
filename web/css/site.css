@@ -18,6 +18,21 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
     color: #72C02C;
 }
 
+#rootcontainer{
+  background-color: #ffffff;
+}
+
+.btn-primary{
+  background-color: #E6E6FA;
+  border-color: #B57EDC;
+}
+
+.btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active, .open .dropdown-toggle.btn-primary {
+    background-color: #B57EDC;
+    border-color: #efefef;
+    color: #FFFFFF;
+}
+
 .modal-dialog{
   width: 80%;
 }
@@ -27,7 +42,7 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
   margin-top: 30px;
   padding-top: 20px;
   padding-bottom: 30px;
-  background-color: #585F69;
+  background-color: #3E2E55;
   color: #DADADA;
 }
 

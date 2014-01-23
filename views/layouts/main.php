@@ -110,7 +110,7 @@ Icon::map($this);
 		NavBar::end();
 	?>
 
-  <div class="container">
+  <div class="container" id="rootcontainer">
     <?= $content ?>
   </div>
 
@@ -118,7 +118,8 @@ Icon::map($this);
 		<div class="container">
 			<div class="col-md-4 md-margin-bottom-40">
 				<h3>About</h3>
-				<p>purePO is a modern lightweight and KISS purchase order system.</p>
+				<p>DOCrunner is a light an simple document management system.</p>
+				<p>Special feature is the workflow tool, which is "forwarding" the paper to all assigned recepients.</p>
 			</div>
 			<div class="col-md-4 md-margin-bottom-40">
 				<?php 
@@ -132,9 +133,9 @@ Icon::map($this);
 			<div class="col-md-4">
 				<h3>Contact Us</h3>
 				<p>
-					Frenzel GmbH <br>
-					Hohewartstr. 32 <br>
-					GER - 70469 Stuttgart
+					Cassandra Pate <br>
+					Postgasse 16/65 <br>
+					AT - 1010 Vienna
 				</p>
 				<a href="<?php echo Html::Url(['/site/contact']); ?>"><?= Yii::t('app','Contact'); ?></a>
 			</div>
