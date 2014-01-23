@@ -99,7 +99,7 @@ $config = [
 		],
 		'db' => [
 			'class' => 'yii\db\Connection',
-			'dsn' => 'mysql:host=localhost;dbname=dbname;unix_socket=/tmp/mysql5.sock',
+			'dsn' => 'mysql:host=localhost;dbname=docrunner;unix_socket=/tmp/mysql5.sock',
 			'username' => 'dbuser',
 			'password' => 'dbpass',
 			'charset' => 'utf8',
