@@ -17,7 +17,9 @@ Setup
 3) run migrations
  >php yii migrate/up --migrationPath=@vendor/dektrium/yii2-user/migrations
  >php yii migrate
-4) open url ;)
+4) seed data
+ >php yii seed 
+5) open url ;)
 
 About
 =====

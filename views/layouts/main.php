@@ -59,7 +59,7 @@ Icon::map($this);
 		};
 
 		NavBar::begin([
-			'brandLabel' => Yii::t('app','Purchase Order Request System'),
+			'brandLabel' => Yii::t('app','DOCrunner'),
 			'brandUrl' => Yii::$app->homeUrl,
 			'options' => [
 				'class' => 'navbar navbar-default navbar-fixed-top',
