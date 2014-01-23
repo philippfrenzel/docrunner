@@ -5,7 +5,7 @@ use yii\helpers\Html;
 /**
  * @var yii\web\View $this
  */
-$this->title = Yii::t('app','PUREpo - Purchase Request Order System - Home');
+$this->title = Yii::t('app','DOCrunner - Document Management and Comment System - Home');
 ?>
 <div class="site-index">
 
@@ -23,9 +23,9 @@ $this->title = Yii::t('app','PUREpo - Purchase Request Order System - Home');
 				<div class="jumbotron">
 					<h1>Welcome!</h1>
 
-					<p class="lead">to purchase request - purchase order</p>
+					<p class="lead">to DOCrunner</p>
 
-					<p><a class="btn btn-lg btn-success" href="<?php echo Html::Url(array('/user/auth/login')); ?>">Login PUREpo!</a></p>
+					<p><a class="btn btn-lg btn-success" href="<?php echo Html::Url(array('/user/auth/login')); ?>">Login DOCrunner!</a></p>
 				</div>
 			</div>
 	</div>
