@@ -1,5 +1,10 @@
 docrunner
 =========
+ ____  _____  ___  ____  __  __  _  _  _  _  ____  ____ 
+(  _ \(  _  )/ __)(  _ \(  )(  )( \( )( \( )( ___)(  _ \
+ )(_) ))(_)(( (__  )   / )(__)(  )  (  )  (  )__)  )   /
+(____/(_____)\___)(_)\_)(______)(_)\_)(_)\_)(____)(_)\_)
+
 
 Document Comment And Running System
 
@@ -14,3 +19,14 @@ Setup
  >php yii migrate
 4) open url ;)
 
+About
+=====
+
+ * Authors: Cassandra Pate
+ * Co-Authors: Philipp Frenzel
+
+Thanks
+======
+
+yii - framework developers
+bootstrap - css framework developers
