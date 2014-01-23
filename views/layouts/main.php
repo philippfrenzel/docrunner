@@ -146,7 +146,7 @@ Icon::map($this);
 			<div class="row">
 				<div class="col-md-4">
 					<p class="copyright-space">
-						Frenzel GmbH 2013
+						Cassandra Pate (2013)
 					</p>
 				</div>
 				<div class="col-md-8">
