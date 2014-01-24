@@ -22,6 +22,7 @@ class m140124_091629_dmspaper extends \yii\db\Migration
         'party_id'       => 'INTEGER UNSIGNED DEFAULT NULL',
         'description'    => 'MEDIUMTEXT',
         'name'           => 'VARCHAR(255)',
+        'tags'           => 'TEXT',
         'status'         => 'VARCHAR(255) NOT NULL DEFAULT "created"',
         'creator_id'     => 'INTEGER NOT NULL',
         'time_deleted'   => 'INTEGER DEFAULT NULL',

@@ -1,0 +1,82 @@
+<?php
+
+namespace app\modules\dms\models;
+
+use yii\base\Model;
+use yii\data\ActiveDataProvider;
+use app\modules\dms\models\Dmpaper;
+
+/**
+ * DmpaperSearch represents the model behind the search form about Dmpaper.
+ */
+class DmpaperSearch extends Model
+{
+	public $id;
+	public $party_id;
+	public $description;
+	public $name;
+	public $status;
+	public $creator_id;
+	public $time_deleted;
+	public $time_create;
+
+	public function rules()
+	{
+		return [
+			[['id', 'party_id', 'creator_id', 'time_deleted', 'time_create'], 'integer'],
+			[['description', 'name', 'status'], 'safe'],
+		];
+	}
+
+	/**
+	 * @inheritdoc
+	 */
+	public function attributeLabels()
+	{
+		return [
+			'id' => 'ID',
+			'party_id' => 'Document Supplier',
+			'description' => 'Description',
+			'name' => 'Name',
+			'status' => 'Status',
+			'creator_id' => 'Creator',
+			'time_deleted' => 'Deleted on',
+			'time_create' => 'Created on',
+		];
+	}
+
+	public function search($params)
+	{
+		$query = Dmpaper::find();
+		$dataProvider = new ActiveDataProvider([
+			'query' => $query,
+		]);
+
+		if (!($this->load($params) && $this->validate())) {
+			return $dataProvider;
+		}
+
+		$this->addCondition($query, 'id');
+		$this->addCondition($query, 'party_id');
+		$this->addCondition($query, 'description', true);
+		$this->addCondition($query, 'name', true);
+		$this->addCondition($query, 'status', true);
+		$this->addCondition($query, 'creator_id');
+		$this->addCondition($query, 'time_deleted');
+		$this->addCondition($query, 'time_create');
+		return $dataProvider;
+	}
+
+	protected function addCondition($query, $attribute, $partialMatch = false)
+	{
+		$value = $this->$attribute;
+		if (trim($value) === '') {
+			return;
+		}
+		if ($partialMatch) {
+			$query->andWhere(['like', $attribute, $value]);
+		} else {
+			$query->andWhere([$attribute => $value]);
+		}
+	}
+}

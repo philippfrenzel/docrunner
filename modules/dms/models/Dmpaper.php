@@ -2,6 +2,10 @@
 
 namespace app\modules\dms\models;
 
+use \DateTime;
+use app\modules\tags\models\Tag;
+use app\modules\comments\models\Comment;
+
 /**
  * This is the model class for table "tbl_dmpaper".
  *
@@ -9,6 +13,7 @@ namespace app\modules\dms\models;
  * @property integer $party_id
  * @property string $description
  * @property string $name
+ * @property string $tags
  * @property string $status
  * @property integer $creator_id
  * @property integer $time_deleted
@@ -27,6 +32,12 @@ class Dmpaper extends \yii\db\ActiveRecord
 	}
 
 	/**
+	 * storing the old tags into this variable
+	 * @var [type]
+	 */
+	private $_oldTags;
+
+	/**
 	 * @inheritdoc
 	 */
 	public function rules()
@@ -34,8 +45,10 @@ class Dmpaper extends \yii\db\ActiveRecord
 		return [
 			[['party_id', 'creator_id', 'time_deleted', 'time_create'], 'integer'],
 			[['description'], 'string'],
-			[['creator_id'], 'required'],
-			[['name', 'status'], 'string', 'max' => 255]
+			//[['creator_id'], 'required'], not requiered as it will be filled automatically before save
+			[['name', 'status'], 'string', 'max' => 255],
+			['tags', 'match', 'pattern'=>'/^[\w\s,]+$/', 'message'=>'Tags can only contain word characters.'],
+			['tags', 'normalizeTags'],
 		];
 	}
 
@@ -54,6 +67,7 @@ class Dmpaper extends \yii\db\ActiveRecord
 			'creator_id'   => \Yii::t('app','Creator ID'),
 			'time_deleted' => \Yii::t('app','Time Deleted'),
 			'time_create'  => \Yii::t('app','Time Create'),
+			'tags'         => \Yii::t('app','Tags'),
 		];
 	}
 
@@ -65,4 +79,72 @@ class Dmpaper extends \yii\db\ActiveRecord
 	{
 		return $this->hasOne(Party::className(), ['id' => 'party_id']);
 	}
+
+	/**
+   * [beforeSave description]
+   * @param  [type] $insert [description]
+   * @return [type]         [description]
+   */
+  public function beforeSave($insert)
+  {
+    $date = new DateTime('now');
+    if($this->isNewRecord)
+    {
+      if(\Yii::$app->user->isGuest)
+      {
+        $this->creator_id = 0; //external system writer
+      }
+      else
+      {
+        $this->creator_id = \Yii::$app->user->identity->id;
+      }      
+    }
+    if(is_null($this->time_create))
+    {
+      $this->time_create = $date->format("U");
+    }
+    return parent::beforeSave($insert);
+  }
+
+  /**
+   * everything that has todo with the tags to this paper
+   */
+  
+  /**
+	 * @return array a list of links that point to the post list filtered by every tag of this post
+	 */
+	public function getTagLinks()
+	{
+		$links=array();
+		foreach(Tag::string2array($this->tags) as $tag)
+			$links[]=Html::a(Html::encode($tag), array('post/index', 'tag'=>$tag), array('class'=>'label'));
+		return $links;
+	}
+
+	/**
+	 * Normalizes the user-entered tags.
+	 */
+	public function normalizeTags($attribute,$params)
+	{
+		$this->tags=Tag::array2string(array_unique(Tag::string2array($this->tags)));
+	}
+
+	/**
+	 * This is invoked when a record is populated with data from a find() call.
+	 */
+	public function afterFind()
+	{
+		parent::afterFind();
+		$this->_oldTags=$this->tags;
+	}
+
+	/**
+	 * This is invoked after the record is saved.
+	 */
+	public function afterSave($insert)
+	{
+		parent::afterSave($insert);
+		Tag::updateFrequency($this->_oldTags, $this->tags);
+	}
+
 }

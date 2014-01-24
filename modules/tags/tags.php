@@ -3,7 +3,7 @@
 namespace app\modules\tags;
 
 
-class tags extends \yii\base\Module
+class Tags extends \yii\base\Module
 {
 	public $controllerNamespace = 'app\modules\tags\controllers';
 

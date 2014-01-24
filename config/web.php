@@ -29,7 +29,7 @@ $config = [
 	        'class' => 'app\modules\pages\Pages',
 	    ],
 	    'tags' => [
-	        'class' => 'app\modules\tags\Tag',
+	        'class' => 'app\modules\tags\Tags',
 	    ],
 	    'posts' => [
 	        'class' => 'app\modules\posts\Posts',

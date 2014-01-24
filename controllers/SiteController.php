@@ -54,7 +54,7 @@ class SiteController extends AppController
 		}
 		else
 		{
-			return $this->render('dashboard');
+			return $this->render('docrunner');
 		}
 	}
 

@@ -92,12 +92,12 @@ class Tag extends \yii\db\ActiveRecord
 
     public static function string2array($tags)
     {
-        return preg_split('/\s*,\s*/',trim($tags),-1,PREG_SPLIT_NO_EMPTY);
+        return explode(',',trim($tags));
     }
 
     public static function array2string($tags)
     {
-        return implode(', ',$tags);
+        return implode(',',$tags);
     }
 
     public static function updateFrequency($oldTags, $newTags)
