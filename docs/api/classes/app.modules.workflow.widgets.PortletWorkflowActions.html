@@ -1,0 +1,1804 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+    <meta charset="utf-8"/>
+    <title>API Documentation</title>
+    <meta name="author" content=""/>
+    <meta name="description" content=""/>
+
+    <link href="https://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
+    <link href="https://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/prism.css" rel="stylesheet" media="all"/>
+    <link href="../css/template.css" rel="stylesheet" media="all"/>
+    
+    <!--[if lt IE 9]>
+    <script src="https://html5shim.googlecode.com/svn/trunk/html5.js" type="text/javascript"></script>
+    <![endif]-->
+    <script src="https://code.jquery.com/jquery-1.10.2.min.js" type="text/javascript"></script>
+    <script src="https://code.jquery.com/ui/1.10.3/jquery-ui.min.js" type="text/javascript"></script>
+    <script src="https://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+    <script src="../js/jquery.smooth-scroll.js"></script>
+    <script src="../js/prism.min.js"></script>
+    <!-- TODO: Add http://jscrollpane.kelvinluck.com/ to style the scrollbars for browsers not using webkit-->
+    <script type="text/javascript">
+    function loadExternalCodeSnippets() {
+        Array.prototype.slice.call(document.querySelectorAll('pre[data-src]')).forEach(function (pre) {
+            var src = pre.getAttribute('data-src');
+            var extension = (src.match(/\.(\w+)$/) || [, ''])[1];
+            var language = 'php';
+
+            var code = document.createElement('code');
+            code.className = 'language-' + language;
+
+            pre.textContent = '';
+
+            code.textContent = 'Loading…';
+
+            pre.appendChild(code);
+
+            var xhr = new XMLHttpRequest();
+
+            xhr.open('GET', src, true);
+
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState == 4) {
+
+                    if (xhr.status < 400 && xhr.responseText) {
+                        code.textContent = xhr.responseText;
+
+                        Prism.highlightElement(code);
+                    }
+                    else if (xhr.status >= 400) {
+                        code.textContent = '✖ Error ' + xhr.status + ' while fetching file: ' + xhr.statusText;
+                    }
+                    else {
+                        code.textContent = '✖ Error: File does not exist or is empty';
+                    }
+                }
+            };
+
+            xhr.send(null);
+        });
+    }
+
+    $(document).ready(function(){
+        loadExternalCodeSnippets();
+    });
+    $('#source-view').on('shown', function () {
+        loadExternalCodeSnippets();
+    })
+</script>
+
+    <link rel="shortcut icon" href="../images/favicon.ico"/>
+    <link rel="apple-touch-icon" href="../images/apple-touch-icon.png"/>
+    <link rel="apple-touch-icon" sizes="72x72" href="../images/apple-touch-icon-72x72.png"/>
+    <link rel="apple-touch-icon" sizes="114x114" href="../images/apple-touch-icon-114x114.png"/>
+</head>
+<body>
+
+<div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container">
+            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <i class="icon-ellipsis-vertical"></i>
+            </a>
+            <a class="brand" href="../index.html">API Documentation</a>
+
+            <div class="nav-collapse">
+                <ul class="nav pull-right">
+                    <li class="dropdown">
+                        <a href="../index.html" class="dropdown-toggle" data-toggle="dropdown">
+                            API Documentation <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                                                        <li><a href="../namespaces/app.html">\app</a></li>
+                                                    </ul>
+                    </li>
+                    <li class="dropdown" id="charts-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            Charts <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="../graphs/class.html">
+                                    <i class="icon-list-alt"></i>&#160;Class hierarchy diagram
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown" id="reports-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            Reports <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="../reports/errors.html">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        <i class="icon-list-alt"></i>&#160;Errors <span class="label label-info pull-right">1203</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="../reports/markers.html">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        <i class="icon-list-alt"></i>&#160;Markers <span class="label label-info pull-right">1</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!--<div class="go_to_top">-->
+    <!--<a href="#___" style="color: inherit">Back to top&#160;&#160;<i class="icon-upload icon-white"></i></a>-->
+    <!--</div>-->
+</div>
+
+<div id="___" class="container-fluid">
+        <section class="row-fluid">
+        <div class="span2 sidebar">
+                                <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle " data-toggle="collapse" data-target="#namespace-2135067578"></a>
+                                <a href="../namespaces/default.html" style="margin-left: 30px; padding-left: 0">\</a>
+            </div>
+            <div id="namespace-2135067578" class="accordion-body collapse in">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1373283184"></a>
+                                <a href="../namespaces/app.html" style="margin-left: 30px; padding-left: 0">app</a>
+            </div>
+            <div id="namespace-1373283184" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-888842055"></a>
+                                <a href="../namespaces/app.modules.html" style="margin-left: 30px; padding-left: 0">modules</a>
+            </div>
+            <div id="namespace-888842055" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-883275995"></a>
+                                <a href="../namespaces/app.modules.article.html" style="margin-left: 30px; padding-left: 0">article</a>
+            </div>
+            <div id="namespace-883275995" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1253669496"></a>
+                                <a href="../namespaces/app.modules.article.controllers.html" style="margin-left: 30px; padding-left: 0">controllers</a>
+            </div>
+            <div id="namespace-1253669496" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/app.modules.article.controllers.ArticleController.html">ArticleController</a></li>
+                                                    <li class="class"><a href="../classes/app.modules.article.controllers.DefaultController.html">DefaultController</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1758423409"></a>
+                                <a href="../namespaces/app.modules.article.models.html" style="margin-left: 30px; padding-left: 0">models</a>
+            </div>
+            <div id="namespace-1758423409" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/app.modules.article.models.Article.html">Article</a></li>
+                                                    <li class="class"><a href="../classes/app.modules.article.models.ArticleSearch.html">ArticleSearch</a></li>
+                                                    <li class="class"><a href="../classes/app.modules.article.models.Price.html">Price</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/app.modules.article.article.html">article</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1818379566"></a>
+                                <a href="../namespaces/app.modules.comments.html" style="margin-left: 30px; padding-left: 0">comments</a>
+            </div>
+            <div id="namespace-1818379566" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1073309435"></a>
+                                <a href="../namespaces/app.modules.comments.controllers.html" style="margin-left: 30px; padding-left: 0">controllers</a>
+            </div>
+            <div id="namespace-1073309435" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/app.modules.comments.controllers.CommentController.html">CommentController</a></li>
+                                                    <li class="class"><a href="../classes/app.modules.comments.controllers.DefaultController.html">DefaultController</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1826192878"></a>
+                                <a href="../namespaces/app.modules.comments.models.html" style="margin-left: 30px; padding-left: 0">models</a>
+            </div>
+            <div id="namespace-1826192878" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/app.modules.comments.models.Comment.html">Comment</a></li>
+                                                    <li class="class"><a href="../classes/app.modules.comments.models.CommentSearch.html">CommentSearch</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-271515251"></a>
+                                <a href="../namespaces/app.modules.comments.widgets.html" style="margin-left: 30px; padding-left: 0">widgets</a>
+            </div>
+            <div id="namespace-271515251" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/app.modules.comments.widgets.Portlet.html">Portlet</a></li>
+                                                    <li class="class"><a href="../classes/app.modules.comments.widgets.PortletComments.html">PortletComments</a></li>
+                                                    <li class="class"><a href="../classes/app.modules.comments.widgets.PortletCommentsBatch.html">PortletCommentsBatch</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/app.modules.comments.Comments.html">Comments</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1734635688"></a>
+                                <a href="../namespaces/app.modules.dms.html" style="margin-left: 30px; padding-left: 0">dms</a>
+            </div>
+            <div id="namespace-1734635688" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1203574742"></a>
+                                <a href="../namespaces/app.modules.dms.controllers.html" style="margin-left: 30px; padding-left: 0">controllers</a>
+            </div>
+            <div id="namespace-1203574742" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/app.modules.dms.controllers.DefaultController.html">DefaultController</a></li>
+                                                    <li class="class"><a href="../classes/app.modules.dms.controllers.DmpaperController.html">DmpaperController</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1688722316"></a>
+                                <a href="../namespaces/app.modules.dms.models.html" style="margin-left: 30px; padding-left: 0">models</a>
+            </div>
+            <div id="namespace-1688722316" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/app.modules.dms.models.Dmpaper.html">Dmpaper</a></li>
+                                                    <li class="class"><a href="../classes/app.modules.dms.models.DmpaperSearch.html">DmpaperSearch</a></li>
+                                                    <li class="class"><a href="../classes/app.modules.dms.models.Dmsys.html">Dmsys</a></li>
+                                                    <li class="class"><a href="../classes/app.modules.dms.models.PartyForm.html">PartyForm</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-731353478"></a>
+                                <a href="../namespaces/app.modules.dms.widgets.html" style="margin-left: 30px; padding-left: 0">widgets</a>
+            </div>
+            <div id="namespace-731353478" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/app.modules.dms.widgets.Portlet.html">Portlet</a></li>
+                                                    <li class="class"><a href="../classes/app.modules.dms.widgets.PortletDms.html">PortletDms</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/app.modules.dms.dms.html">dms</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1442529482"></a>
+                                <a href="../namespaces/app.modules.messaging.html" style="margin-left: 30px; padding-left: 0">messaging</a>
+            </div>
+            <div id="namespace-1442529482" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-798135755"></a>
+                                <a href="../namespaces/app.modules.messaging.controllers.html" style="margin-left: 30px; padding-left: 0">controllers</a>
+            </div>
+            <div id="namespace-798135755" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/app.modules.messaging.controllers.DefaultController.html">DefaultController</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-960423793"></a>
+                                <a href="../namespaces/app.modules.messaging.models.html" style="margin-left: 30px; padding-left: 0">models</a>
+            </div>
+            <div id="namespace-960423793" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/app.modules.messaging.models.Messages.html">Messages</a></li>
+                                                    <li class="class"><a href="../classes/app.modules.messaging.models.MessagesSearch.html">MessagesSearch</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1324822987"></a>
+                                <a href="../namespaces/app.modules.messaging.widgets.html" style="margin-left: 30px; padding-left: 0">widgets</a>
+            </div>
+            <div id="namespace-1324822987" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/app.modules.messaging.widgets.Portlet.html">Portlet</a></li>
+                                                    <li class="class"><a href="../classes/app.modules.messaging.widgets.PortletMessages.html">PortletMessages</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/app.modules.messaging.Messaging.html">Messaging</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1420937260"></a>
+                                <a href="../namespaces/app.modules.pages.html" style="margin-left: 30px; padding-left: 0">pages</a>
+            </div>
+            <div id="namespace-1420937260" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-271142491"></a>
+                                <a href="../namespaces/app.modules.pages.controllers.html" style="margin-left: 30px; padding-left: 0">controllers</a>
+            </div>
+            <div id="namespace-271142491" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/app.modules.pages.controllers.DefaultController.html">DefaultController</a></li>
+                                                    <li class="class"><a href="../classes/app.modules.pages.controllers.PageController.html">PageController</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1964098069"></a>
+                                <a href="../namespaces/app.modules.pages.models.html" style="margin-left: 30px; padding-left: 0">models</a>
+            </div>
+            <div id="namespace-1964098069" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/app.modules.pages.models.Page.html">Page</a></li>
+                                                    <li class="class"><a href="../classes/app.modules.pages.models.PageForm.html">PageForm</a></li>
+                                                    <li class="class"><a href="../classes/app.modules.pages.models.PageSearchForm.html">PageSearchForm</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-734283948"></a>
+                                <a href="../namespaces/app.modules.pages.widgets.html" style="margin-left: 30px; padding-left: 0">widgets</a>
+            </div>
+            <div id="namespace-734283948" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/app.modules.pages.widgets.Portlet.html">Portlet</a></li>
+                                                    <li class="class"><a href="../classes/app.modules.pages.widgets.PortletCmsHistory.html">PortletCmsHistory</a></li>
+                                                    <li class="class"><a href="../classes/app.modules.pages.widgets.PortletCmsToc.html">PortletCmsToc</a></li>
+                                                    <li class="class"><a href="../classes/app.modules.pages.widgets.PortletPageNavigationSub.html">PortletPageNavigationSub</a></li>
+                                                    <li class="class"><a href="../classes/app.modules.pages.widgets.PortletPages.html">PortletPages</a></li>
+                                                    <li class="class"><a href="../classes/app.modules.pages.widgets.PortletPagesAdmin.html">PortletPagesAdmin</a></li>
+                                                    <li class="class"><a href="../classes/app.modules.pages.widgets.PortletPagesSearch.html">PortletPagesSearch</a></li>
+                                                    <li class="class"><a href="../classes/app.modules.pages.widgets.PortletPageToc.html">PortletPageToc</a></li>
+                                                    <li class="class"><a href="../classes/app.modules.pages.widgets.PortletSidemenu.html">PortletSidemenu</a></li>
+                                                    <li class="class"><a href="../classes/app.modules.pages.widgets.PortletSinglePage.html">PortletSinglePage</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/app.modules.pages.Pages.html">Pages</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-323429704"></a>
+                                <a href="../namespaces/app.modules.parties.html" style="margin-left: 30px; padding-left: 0">parties</a>
+            </div>
+            <div id="namespace-323429704" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1432271268"></a>
+                                <a href="../namespaces/app.modules.parties.controllers.html" style="margin-left: 30px; padding-left: 0">controllers</a>
+            </div>
+            <div id="namespace-1432271268" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/app.modules.parties.controllers.AddressController.html">AddressController</a></li>
+                                                    <li class="class"><a href="../classes/app.modules.parties.controllers.ContactController.html">ContactController</a></li>
+                                                    <li class="class"><a href="../classes/app.modules.parties.controllers.CountryController.html">CountryController</a></li>
+                                                    <li class="class"><a href="../classes/app.modules.parties.controllers.DefaultController.html">DefaultController</a></li>
+                                                    <li class="class"><a href="../classes/app.modules.parties.controllers.PartyController.html">PartyController</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1415871995"></a>
+                                <a href="../namespaces/app.modules.parties.models.html" style="margin-left: 30px; padding-left: 0">models</a>
+            </div>
+            <div id="namespace-1415871995" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/app.modules.parties.models.Address.html">Address</a></li>
+                                                    <li class="class"><a href="../classes/app.modules.parties.models.AddressSearch.html">AddressSearch</a></li>
+                                                    <li class="class"><a href="../classes/app.modules.parties.models.Contact.html">Contact</a></li>
+                                                    <li class="class"><a href="../classes/app.modules.parties.models.ContactSearch.html">ContactSearch</a></li>
+                                                    <li class="class"><a href="../classes/app.modules.parties.models.Country.html">Country</a></li>
+                                                    <li class="class"><a href="../classes/app.modules.parties.models.CountrySearch.html">CountrySearch</a></li>
+                                                    <li class="class"><a href="../classes/app.modules.parties.models.Party.html">Party</a></li>
+                                                    <li class="class"><a href="../classes/app.modules.parties.models.PartySearch.html">PartySearch</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-485231200"></a>
+                                <a href="../namespaces/app.modules.parties.widgets.html" style="margin-left: 30px; padding-left: 0">widgets</a>
+            </div>
+            <div id="namespace-485231200" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/app.modules.parties.widgets.Portlet.html">Portlet</a></li>
+                                                    <li class="class"><a href="../classes/app.modules.parties.widgets.PortletPartyInfo.html">PortletPartyInfo</a></li>
+                                                    <li class="class"><a href="../classes/app.modules.parties.widgets.PortletTasksLog.html">PortletTasksLog</a></li>
+                                                    <li class="class"><a href="../classes/app.modules.parties.widgets.PortletToolbox.html">PortletToolbox</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/app.modules.parties.parties.html">parties</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-370924916"></a>
+                                <a href="../namespaces/app.modules.posts.html" style="margin-left: 30px; padding-left: 0">posts</a>
+            </div>
+            <div id="namespace-370924916" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-306726798"></a>
+                                <a href="../namespaces/app.modules.posts.controllers.html" style="margin-left: 30px; padding-left: 0">controllers</a>
+            </div>
+            <div id="namespace-306726798" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/app.modules.posts.controllers.DefaultController.html">DefaultController</a></li>
+                                                    <li class="class"><a href="../classes/app.modules.posts.controllers.PostController.html">PostController</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1700309955"></a>
+                                <a href="../namespaces/app.modules.posts.models.html" style="margin-left: 30px; padding-left: 0">models</a>
+            </div>
+            <div id="namespace-1700309955" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/app.modules.posts.models.Post.html">Post</a></li>
+                                                    <li class="class"><a href="../classes/app.modules.posts.models.PostForm.html">PostForm</a></li>
+                                                    <li class="class"><a href="../classes/app.modules.posts.models.PostSearch.html">PostSearch</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-387216529"></a>
+                                <a href="../namespaces/app.modules.posts.widgets.html" style="margin-left: 30px; padding-left: 0">widgets</a>
+            </div>
+            <div id="namespace-387216529" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/app.modules.posts.widgets.Portlet.html">Portlet</a></li>
+                                                    <li class="class"><a href="../classes/app.modules.posts.widgets.PortletPosts.html">PortletPosts</a></li>
+                                                    <li class="class"><a href="../classes/app.modules.posts.widgets.PortletPostsAdmin.html">PortletPostsAdmin</a></li>
+                                                    <li class="class"><a href="../classes/app.modules.posts.widgets.PortletSidemenu.html">PortletSidemenu</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/app.modules.posts.Posts.html">Posts</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1431753876"></a>
+                                <a href="../namespaces/app.modules.purchase.html" style="margin-left: 30px; padding-left: 0">purchase</a>
+            </div>
+            <div id="namespace-1431753876" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-203968854"></a>
+                                <a href="../namespaces/app.modules.purchase.controllers.html" style="margin-left: 30px; padding-left: 0">controllers</a>
+            </div>
+            <div id="namespace-203968854" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/app.modules.purchase.controllers.DefaultController.html">DefaultController</a></li>
+                                                    <li class="class"><a href="../classes/app.modules.purchase.controllers.PurchaseOrderController.html">PurchaseOrderController</a></li>
+                                                    <li class="class"><a href="../classes/app.modules.purchase.controllers.PurchaseOrderGroupController.html">PurchaseOrderGroupController</a></li>
+                                                    <li class="class"><a href="../classes/app.modules.purchase.controllers.PurchaseOrderLineController.html">PurchaseOrderLineController</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1303501763"></a>
+                                <a href="../namespaces/app.modules.purchase.models.html" style="margin-left: 30px; padding-left: 0">models</a>
+            </div>
+            <div id="namespace-1303501763" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/app.modules.purchase.models.PartyForm.html">PartyForm</a></li>
+                                                    <li class="class"><a href="../classes/app.modules.purchase.models.PurchaseOrder.html">PurchaseOrder</a></li>
+                                                    <li class="class"><a href="../classes/app.modules.purchase.models.PurchaseOrderGroup.html">PurchaseOrderGroup</a></li>
+                                                    <li class="class"><a href="../classes/app.modules.purchase.models.PurchaseOrderGroupSearch.html">PurchaseOrderGroupSearch</a></li>
+                                                    <li class="class"><a href="../classes/app.modules.purchase.models.PurchaseOrderLine.html">PurchaseOrderLine</a></li>
+                                                    <li class="class"><a href="../classes/app.modules.purchase.models.PurchaseOrderLineSearch.html">PurchaseOrderLineSearch</a></li>
+                                                    <li class="class"><a href="../classes/app.modules.purchase.models.PurchaseOrderSearch.html">PurchaseOrderSearch</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-209405434"></a>
+                                <a href="../namespaces/app.modules.purchase.widgets.html" style="margin-left: 30px; padding-left: 0">widgets</a>
+            </div>
+            <div id="namespace-209405434" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/app.modules.purchase.widgets.Portlet.html">Portlet</a></li>
+                                                    <li class="class"><a href="../classes/app.modules.purchase.widgets.PortletContactInfo.html">PortletContactInfo</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/app.modules.purchase.purchase.html">purchase</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1416618547"></a>
+                                <a href="../namespaces/app.modules.revision.html" style="margin-left: 30px; padding-left: 0">revision</a>
+            </div>
+            <div id="namespace-1416618547" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1816970298"></a>
+                                <a href="../namespaces/app.modules.revision.controllers.html" style="margin-left: 30px; padding-left: 0">controllers</a>
+            </div>
+            <div id="namespace-1816970298" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/app.modules.revision.controllers.DefaultController.html">DefaultController</a></li>
+                                                    <li class="class"><a href="../classes/app.modules.revision.controllers.RevisionController.html">RevisionController</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1425448262"></a>
+                                <a href="../namespaces/app.modules.revision.models.html" style="margin-left: 30px; padding-left: 0">models</a>
+            </div>
+            <div id="namespace-1425448262" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/app.modules.revision.models.Revision.html">Revision</a></li>
+                                                    <li class="class"><a href="../classes/app.modules.revision.models.RevisionForm.html">RevisionForm</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-754250380"></a>
+                                <a href="../namespaces/app.modules.revision.widgets.html" style="margin-left: 30px; padding-left: 0">widgets</a>
+            </div>
+            <div id="namespace-754250380" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/app.modules.revision.widgets.Portlet.html">Portlet</a></li>
+                                                    <li class="class"><a href="../classes/app.modules.revision.widgets.PortletRevisionBatch.html">PortletRevisionBatch</a></li>
+                                                    <li class="class"><a href="../classes/app.modules.revision.widgets.PortletRevisionLog.html">PortletRevisionLog</a></li>
+                                                    <li class="class"><a href="../classes/app.modules.revision.widgets.PortletSidemenu.html">PortletSidemenu</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/app.modules.revision.Revision.html">Revision</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-677062256"></a>
+                                <a href="../namespaces/app.modules.tags.html" style="margin-left: 30px; padding-left: 0">tags</a>
+            </div>
+            <div id="namespace-677062256" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-203105756"></a>
+                                <a href="../namespaces/app.modules.tags.controllers.html" style="margin-left: 30px; padding-left: 0">controllers</a>
+            </div>
+            <div id="namespace-203105756" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/app.modules.tags.controllers.DefaultController.html">DefaultController</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-2049416083"></a>
+                                <a href="../namespaces/app.modules.tags.models.html" style="margin-left: 30px; padding-left: 0">models</a>
+            </div>
+            <div id="namespace-2049416083" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/app.modules.tags.models.Tag.html">Tag</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/app.modules.tags.Tags.html">Tags</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1935073712"></a>
+                                <a href="../namespaces/app.modules.tasks.html" style="margin-left: 30px; padding-left: 0">tasks</a>
+            </div>
+            <div id="namespace-1935073712" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1117288538"></a>
+                                <a href="../namespaces/app.modules.tasks.controllers.html" style="margin-left: 30px; padding-left: 0">controllers</a>
+            </div>
+            <div id="namespace-1117288538" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/app.modules.tasks.controllers.DefaultController.html">DefaultController</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-556765927"></a>
+                                <a href="../namespaces/app.modules.tasks.models.html" style="margin-left: 30px; padding-left: 0">models</a>
+            </div>
+            <div id="namespace-556765927" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/app.modules.tasks.models.Task.html">Task</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-634472623"></a>
+                                <a href="../namespaces/app.modules.tasks.widgets.html" style="margin-left: 30px; padding-left: 0">widgets</a>
+            </div>
+            <div id="namespace-634472623" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/app.modules.tasks.widgets.Portlet.html">Portlet</a></li>
+                                                    <li class="class"><a href="../classes/app.modules.tasks.widgets.PortletSidemenu.html">PortletSidemenu</a></li>
+                                                    <li class="class"><a href="../classes/app.modules.tasks.widgets.PortletTasksBatch.html">PortletTasksBatch</a></li>
+                                                    <li class="class"><a href="../classes/app.modules.tasks.widgets.PortletTasksLog.html">PortletTasksLog</a></li>
+                                                    <li class="class"><a href="../classes/app.modules.tasks.widgets.PortletToolbox.html">PortletToolbox</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/app.modules.tasks.Task.html">Task</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1817877063"></a>
+                                <a href="../namespaces/app.modules.workflow.html" style="margin-left: 30px; padding-left: 0">workflow</a>
+            </div>
+            <div id="namespace-1817877063" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-228867630"></a>
+                                <a href="../namespaces/app.modules.workflow.controllers.html" style="margin-left: 30px; padding-left: 0">controllers</a>
+            </div>
+            <div id="namespace-228867630" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/app.modules.workflow.controllers.DefaultController.html">DefaultController</a></li>
+                                                    <li class="class"><a href="../classes/app.modules.workflow.controllers.WorkflowController.html">WorkflowController</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-1343142906"></a>
+                                <a href="../namespaces/app.modules.workflow.models.html" style="margin-left: 30px; padding-left: 0">models</a>
+            </div>
+            <div id="namespace-1343142906" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/app.modules.workflow.models.Workflow.html">Workflow</a></li>
+                                                    <li class="class"><a href="../classes/app.modules.workflow.models.WorkflowForm.html">WorkflowForm</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                                                    <div class="accordion" style="margin-bottom: 0">
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-target="#namespace-89565038"></a>
+                                <a href="../namespaces/app.modules.workflow.widgets.html" style="margin-left: 30px; padding-left: 0">widgets</a>
+            </div>
+            <div id="namespace-89565038" class="accordion-body collapse ">
+                <div class="accordion-inner">
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/app.modules.workflow.widgets.Portlet.html">Portlet</a></li>
+                                                    <li class="class"><a href="../classes/app.modules.workflow.widgets.PortletSidemenu.html">PortletSidemenu</a></li>
+                                                    <li class="class"><a href="../classes/app.modules.workflow.widgets.PortletToolbox.html">PortletToolbox</a></li>
+                                                    <li class="class"><a href="../classes/app.modules.workflow.widgets.PortletWorkflowActions.html">PortletWorkflowActions</a></li>
+                                                    <li class="class"><a href="../classes/app.modules.workflow.widgets.PortletWorkflowBatch.html">PortletWorkflowBatch</a></li>
+                                                    <li class="class"><a href="../classes/app.modules.workflow.widgets.PortletWorkflowLog.html">PortletWorkflowLog</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                                                                    <li class="class"><a href="../classes/app.modules.workflow.Workflow.html">Workflow</a></li>
+                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    
+                    <ul>
+                                                                                            </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        </div>
+    </section>
+    <section class="row-fluid">
+        <div class="span10 offset2">
+            <div class="row-fluid">
+                <div class="span8 content class">
+                    <nav>
+                                                <a href="../namespaces/app.modules.workflow.widgets.html">\app\modules\workflow\widgets</a> <i class="icon-level-up"></i>
+                                            </nav>
+                    <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal"><i class="icon-code"></i></a>
+
+                    <h1><small>\app\modules\workflow\widgets</small>PortletWorkflowActions</h1>
+                    <p><em>Portlet is the base class for portlet widgets.</em></p>
+                    <p>A portlet displays a fragment of content, usually in terms of a block
+on the side bars of a Web page.</p>
+<p>To specify the content of the portlet, override the {@link renderContent}
+method, or insert the content code between the {@link CController::beginWidget}
+and {@link CController::endWidget} calls. For example,</p>
+<p>A portlet also has an optional {@link title}. One may also override {@link renderDecoration}
+to further customize the decorative display of a portlet (e.g. adding min/max buttons).</p>
+
+                    <section id="summary">
+                        <h2>Summary</h2>
+                        <section class="row-fluid heading">
+                            <section class="span4">
+                                <a href="#methods">Methods</a>
+                            </section>
+                            <section class="span4">
+                                <a href="#properties">Properties</a>
+                            </section>
+                            <section class="span4">
+                                <a href="#constants">Constants</a>
+                            </section>
+                        </section>
+                        <section class="row-fluid public">
+                            <section class="span4">
+                                                                    <a href="../classes/app.modules.workflow.widgets.Portlet.html#method_init" class="">init()</a><br />
+                                                                    <a href="../classes/app.modules.workflow.widgets.Portlet.html#method_renderToolbar" class="">renderToolbar()</a><br />
+                                                                    <a href="../classes/app.modules.workflow.widgets.Portlet.html#method_run" class="">run()</a><br />
+                                                            </section>
+                            <section class="span4">
+                                                                    <a href="../classes/app.modules.workflow.widgets.Portlet.html#property_title" class="">$title</a><br />
+                                                                    <a href="../classes/app.modules.workflow.widgets.PortletWorkflowActions.html#property_id" class="">$id</a><br />
+                                                                    <a href="../classes/app.modules.workflow.widgets.Portlet.html#property_enableAdmin" class="">$enableAdmin</a><br />
+                                                                    <a href="../classes/app.modules.workflow.widgets.Portlet.html#property_contentCssClass" class="">$contentCssClass</a><br />
+                                                                    <a href="../classes/app.modules.workflow.widgets.Portlet.html#property_tagName" class="">$tagName</a><br />
+                                                                    <a href="../classes/app.modules.workflow.widgets.Portlet.html#property_adminActions" class="">$adminActions</a><br />
+                                                                    <a href="../classes/app.modules.workflow.widgets.Portlet.html#property_htmlOptions" class="">$htmlOptions</a><br />
+                                                                    <a href="../classes/app.modules.workflow.widgets.Portlet.html#property_decorationCssClass" class="">$decorationCssClass</a><br />
+                                                                    <a href="../classes/app.modules.workflow.widgets.Portlet.html#property_titleCssClass" class="">$titleCssClass</a><br />
+                                                                    <a href="../classes/app.modules.workflow.widgets.Portlet.html#property_hideOnEmpty" class="">$hideOnEmpty</a><br />
+                                                            </section>
+                            <section class="span4">
+                                                                    <em>No constants found</em>
+                                                            </section>
+                        </section>
+                        <section class="row-fluid protected">
+                            <section class="span4">
+                                                                    <a href="../classes/app.modules.workflow.widgets.Portlet.html#method_renderContent" class="">renderContent()</a><br />
+                                                                    <a href="../classes/app.modules.workflow.widgets.Portlet.html#method_renderDecoration" class="">renderDecoration()</a><br />
+                                                            </section>
+                            <section class="span4">
+                                                                    <em>No protected properties found</em>
+                                                            </section>
+                            <section class="span4">
+                                <em>N/A</em>
+                            </section>
+                        </section>
+                        <section class="row-fluid private">
+                            <section class="span4">
+                                                                    <em>No private methods found</em>
+                                                            </section>
+                            <section class="span4">
+                                                                    <a href="../classes/app.modules.workflow.widgets.Portlet.html#property__beginTag" class="">$_beginTag</a><br />
+                                                            </section>
+                            <section class="span4">
+                                <em>N/A</em>
+                            </section>
+                        </section>
+                    </section>
+                </div>
+                <aside class="span4 detailsbar">
+                                        
+                    
+                    <dl>
+                        <dt>File</dt>
+                            <dd><a href="../files/workflow.widgets.PortletWorkflowActions.php.html"><div class="path-wrapper">workflow/widgets/PortletWorkflowActions.php</div></a></dd>
+                                                <dt>Package</dt>
+                            <dd><div class="namespace-wrapper">\Default</div></dd>
+                                                <dt>Class hierarchy</dt>
+                            <dd class="hierarchy">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                            
+                                        <div class="namespace-wrapper">\yii\widgets\Block</div>
+                                                                    
+                                        <div class="namespace-wrapper"><a href="../classes/app.modules.workflow.widgets.Portlet.html">\app\modules\workflow\widgets\Portlet</a></div>
+                                                                                                    <div class="namespace-wrapper">\app\modules\workflow\widgets\PortletWorkflowActions</div>
+                            </dd>
+
+                        
+                        
+                        
+                        
+                                                                        </dl>
+                    <h2>Tags</h2>
+                    <table class="table table-condensed">
+                                            <tr>
+                            <th>
+                                todo
+                            </th>
+                            <td>
+                                                            </td>
+                        </tr>
+                                        </table>
+                </aside>
+            </div>
+
+                        
+                                    <a id="properties" name="properties"></a>
+            <div class="row-fluid">
+                <div class="span8 content class">
+                    <h2>Properties</h2>
+                </div>
+                <aside class="span4 detailsbar"></aside>
+            </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_title" name="property_title" class="anchor"></a>
+            <article class="property">
+                <h3 class="public ">$title</h3>
+                <pre class="signature">$title : string</pre>
+                <p><em></em></p>
+                
+
+                                <h4>Type</h4>
+                string
+                &mdash; the title of the portlet. Defaults to null.
+When this is not set, Decoration will not be displayed.
+Note that the title will not be HTML-encoded when rendering.                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/app.modules.workflow.widgets.Portlet.html"><div class="path-wrapper">\app\modules\workflow\widgets\Portlet</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr>
+                        <th>
+                            todo
+                        </th>
+                        <td>
+                                                    </td>
+                    </tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_id" name="property_id" class="anchor"></a>
+            <article class="property">
+                <h3 class="public ">$id</h3>
+                <pre class="signature">$id</pre>
+                <p><em></em></p>
+                
+
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr>
+                        <th>
+                            todo
+                        </th>
+                        <td>
+                                                    </td>
+                    </tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_enableAdmin" name="property_enableAdmin" class="anchor"></a>
+            <article class="property">
+                <h3 class="public ">$enableAdmin</h3>
+                <pre class="signature">$enableAdmin : boolean</pre>
+                <p><em>enable the admin widget, defaults to true</em></p>
+                
+
+                                <h4>Type</h4>
+                boolean
+                                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/app.modules.workflow.widgets.Portlet.html"><div class="path-wrapper">\app\modules\workflow\widgets\Portlet</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr>
+                        <th>
+                            todo
+                        </th>
+                        <td>
+                                                    </td>
+                    </tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_contentCssClass" name="property_contentCssClass" class="anchor"></a>
+            <article class="property">
+                <h3 class="public ">$contentCssClass</h3>
+                <pre class="signature">$contentCssClass : string</pre>
+                <p><em></em></p>
+                
+
+                                <h4>Type</h4>
+                string
+                &mdash; the CSS class for the content container tag. Defaults to &#039;portlet-content&#039;.                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/app.modules.workflow.widgets.Portlet.html"><div class="path-wrapper">\app\modules\workflow\widgets\Portlet</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr>
+                        <th>
+                            todo
+                        </th>
+                        <td>
+                                                    </td>
+                    </tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_tagName" name="property_tagName" class="anchor"></a>
+            <article class="property">
+                <h3 class="public ">$tagName</h3>
+                <pre class="signature">$tagName : string</pre>
+                <p><em></em></p>
+                
+
+                                <h4>Type</h4>
+                string
+                &mdash; the tag name for the portlet container tag. Defaults to &#039;div&#039;.                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/app.modules.workflow.widgets.Portlet.html"><div class="path-wrapper">\app\modules\workflow\widgets\Portlet</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr>
+                        <th>
+                            todo
+                        </th>
+                        <td>
+                                                    </td>
+                    </tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_adminActions" name="property_adminActions" class="anchor"></a>
+            <article class="property">
+                <h3 class="public ">$adminActions</h3>
+                <pre class="signature">$adminActions : array</pre>
+                <p><em></em></p>
+                
+
+                                <h4>Type</h4>
+                array
+                &mdash; of admin actions                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/app.modules.workflow.widgets.Portlet.html"><div class="path-wrapper">\app\modules\workflow\widgets\Portlet</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr>
+                        <th>
+                            todo
+                        </th>
+                        <td>
+                                                    </td>
+                    </tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_htmlOptions" name="property_htmlOptions" class="anchor"></a>
+            <article class="property">
+                <h3 class="public ">$htmlOptions</h3>
+                <pre class="signature">$htmlOptions : array</pre>
+                <p><em></em></p>
+                
+
+                                <h4>Type</h4>
+                array
+                &mdash; the HTML attributes for the portlet container tag.                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/app.modules.workflow.widgets.Portlet.html"><div class="path-wrapper">\app\modules\workflow\widgets\Portlet</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr>
+                        <th>
+                            todo
+                        </th>
+                        <td>
+                                                    </td>
+                    </tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_decorationCssClass" name="property_decorationCssClass" class="anchor"></a>
+            <article class="property">
+                <h3 class="public ">$decorationCssClass</h3>
+                <pre class="signature">$decorationCssClass : string</pre>
+                <p><em></em></p>
+                
+
+                                <h4>Type</h4>
+                string
+                &mdash; the CSS class for the decoration container tag. Defaults to &#039;portlet-decoration&#039;.                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/app.modules.workflow.widgets.Portlet.html"><div class="path-wrapper">\app\modules\workflow\widgets\Portlet</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr>
+                        <th>
+                            todo
+                        </th>
+                        <td>
+                                                    </td>
+                    </tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_titleCssClass" name="property_titleCssClass" class="anchor"></a>
+            <article class="property">
+                <h3 class="public ">$titleCssClass</h3>
+                <pre class="signature">$titleCssClass : string</pre>
+                <p><em></em></p>
+                
+
+                                <h4>Type</h4>
+                string
+                &mdash; the CSS class for the portlet title tag. Defaults to &#039;portlet-title&#039;.                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/app.modules.workflow.widgets.Portlet.html"><div class="path-wrapper">\app\modules\workflow\widgets\Portlet</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr>
+                        <th>
+                            todo
+                        </th>
+                        <td>
+                                                    </td>
+                    </tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property_hideOnEmpty" name="property_hideOnEmpty" class="anchor"></a>
+            <article class="property">
+                <h3 class="public ">$hideOnEmpty</h3>
+                <pre class="signature">$hideOnEmpty : boolean</pre>
+                <p><em></em></p>
+                
+
+                                <h4>Type</h4>
+                boolean
+                &mdash; whether to hide the portlet when the body content is empty. Defaults to true.                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/app.modules.workflow.widgets.Portlet.html"><div class="path-wrapper">\app\modules\workflow\widgets\Portlet</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr>
+                        <th>
+                            since
+                        </th>
+                        <td>
+                                                            
+                                                    </td>
+                    </tr>
+                                    <tr>
+                        <th>
+                            todo
+                        </th>
+                        <td>
+                                                    </td>
+                    </tr>
+                            </table>
+        </aside>
+    </div>
+
+                                                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="property__beginTag" name="property__beginTag" class="anchor"></a>
+            <article class="property">
+                <h3 class="private ">$_beginTag</h3>
+                <pre class="signature">$_beginTag</pre>
+                <p><em></em></p>
+                
+
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                        <dl>
+                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/app.modules.workflow.widgets.Portlet.html"><div class="path-wrapper">\app\modules\workflow\widgets\Portlet</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr>
+                        <th>
+                            todo
+                        </th>
+                        <td>
+                                                    </td>
+                    </tr>
+                            </table>
+        </aside>
+    </div>
+
+                            
+                                    <a id="methods" name="methods"></a>
+            <div class="row-fluid">
+                <div class="span8 content class"><h2>Methods</h2></div>
+                <aside class="span4 detailsbar"></aside>
+            </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_init" name="method_init" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">init()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">init()</pre>
+                <p><em>Initializes the widget.</em></p>
+                <p>This renders the open tags needed by the portlet.
+It also renders the decoration, if any.</p>
+
+                
+                
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/app.modules.workflow.widgets.Portlet.html"><div class="path-wrapper">\app\modules\workflow\widgets\Portlet</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr>
+                        <th>
+                            todo
+                        </th>
+                        <td>
+                                                    </td>
+                    </tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_renderToolbar" name="method_renderToolbar" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">renderToolbar()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">renderToolbar()</pre>
+                <p><em>Renders the portlet admin toolbar</em></p>
+                
+
+                
+                
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/app.modules.workflow.widgets.Portlet.html"><div class="path-wrapper">\app\modules\workflow\widgets\Portlet</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr>
+                        <th>
+                            todo
+                        </th>
+                        <td>
+                                                    </td>
+                    </tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_run" name="method_run" class="anchor"></a>
+            <article class="method">
+                <h3 class="public ">run()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">run()</pre>
+                <p><em>Renders the content of the portlet.</em></p>
+                
+
+                
+                
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/app.modules.workflow.widgets.Portlet.html"><div class="path-wrapper">\app\modules\workflow\widgets\Portlet</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr>
+                        <th>
+                            todo
+                        </th>
+                        <td>
+                                                    </td>
+                    </tr>
+                            </table>
+        </aside>
+    </div>
+
+                                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_renderContent" name="method_renderContent" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">renderContent()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">renderContent()</pre>
+                <p><em>Renders the content of the portlet.</em></p>
+                <p>Child classes should override this method to render the actual content.</p>
+
+                
+                
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/app.modules.workflow.widgets.Portlet.html"><div class="path-wrapper">\app\modules\workflow\widgets\Portlet</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr>
+                        <th>
+                            todo
+                        </th>
+                        <td>
+                                                    </td>
+                    </tr>
+                            </table>
+        </aside>
+    </div>
+
+                                    <div class="row-fluid">
+        <div class="span8 content class">
+            <a id="method_renderDecoration" name="method_renderDecoration" class="anchor"></a>
+            <article class="method">
+                <h3 class="protected ">renderDecoration()</h3>
+                <a href="#source-view" role="button" class="pull-right btn" data-toggle="modal" style="font-size: 1.1em; padding: 9px 14px"><i class="icon-code"></i></a>
+                <pre class="signature" style="margin-right: 54px;">renderDecoration()</pre>
+                <p><em>Renders the decoration for the portlet.</em></p>
+                <p>The default implementation will render the title if it is set.</p>
+
+                
+                
+                            </article>
+        </div>
+        <aside class="span4 detailsbar">
+            <h1><i class="icon-arrow-down"></i></h1>
+                                                            <dl>
+                                                    <dt>Inherited from</dt>
+                    <dd><a href="../classes/app.modules.workflow.widgets.Portlet.html"><div class="path-wrapper">\app\modules\workflow\widgets\Portlet</div></a></dd>
+                                                            </dl>
+            <h2>Tags</h2>
+            <table class="table table-condensed">
+                                    <tr>
+                        <th>
+                            todo
+                        </th>
+                        <td>
+                                                    </td>
+                    </tr>
+                            </table>
+        </aside>
+    </div>
+
+                                                    </div>
+    </section>
+
+    <div id="source-view" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="source-view-label" aria-hidden="true">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h3 id="source-view-label">PortletWorkflowActions.php</h3>
+        </div>
+        <div class="modal-body">
+            <pre data-src="../files/workflow/widgets/PortletWorkflowActions.php.txt" class="language-php line-numbers"></pre>
+        </div>
+    </div>
+
+    <footer class="row-fluid">
+        <section class="span10 offset2">
+            <section class="row-fluid">
+                <section class="span10 offset1">
+                    <section class="row-fluid footer-sections">
+                        <section class="span4">
+                                                        <h1><i class="icon-code"></i></h1>
+                            <div>
+                                <ul>
+                                                                            <li><a href="../namespaces/app.html">\app</a></li>
+                                                                    </ul>
+                            </div>
+                        </section>
+                        <section class="span4">
+                                                        <h1><i class="icon-bar-chart"></i></h1>
+                            <div>
+                                <ul>
+                                    <li><a href="../graphs/class.html">Class Hierarchy Diagram</a></li>
+                                </ul>
+                            </div>
+                        </section>
+                        <section class="span4">
+                                                        <h1><i class="icon-pushpin"></i></h1>
+                            <div>
+                                <ul>
+                                    <li><a href="../reports/errors.html">Errors</a></li>
+                                    <li><a href="../reports/markers.html">Markers</a></li>
+                                </ul>
+                            </div>
+                        </section>
+                    </section>
+                </section>
+            </section>
+            <section class="row-fluid">
+                <section class="span10 offset1">
+                    <hr />
+                    Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor </a> and authored
+                    on 
+Warning: date_default_timezone_get(): It is not safe to rely on the system's timezone settings. You are *required* to use the date.timezone setting or the date_default_timezone_set() function. In case you used any of those methods and you are still getting this warning, you most likely misspelled the timezone identifier. We selected the timezone 'UTC' for now, but please set date.timezone to select your timezone. in /Users/philippfrenzel/Sites/pliq/docrunner/vendor/twig/twig/lib/Twig/Extension/Core.php on line 89
+January 24th, 2014 at 12:48.
+                </section>
+            </section>
+        </section>
+    </footer>
+</div>
+
+</body>
+</html>

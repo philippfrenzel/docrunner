@@ -1,0 +1,192 @@
+<?php
+
+use yii\widgets\ActiveForm;
+use yii\web\JsExpression;
+use yii\helpers\Json;
+
+use kartik\helpers\Html;
+use kartik\widgets\Select2;
+
+/**
+ * @var yii\web\View $this
+ * @var app\modules\dms\models\Dmpaper $model
+ * @var yii\widgets\ActiveForm $form
+ */
+
+$siteJS = <<<SITEJS
+	
+$('#window_party_create').on('click',myModalWindow);
+
+SITEJS;
+$this->registerJs($siteJS);
+
+?>
+
+<div class="dmpaper-form">
+
+	<?php 
+    if(class_exists('\app\modules\dms\widgets\PortletDms') && Yii::$app->user->isAdvanced){
+      echo \app\modules\dms\widgets\PortletDms::widget(array(
+        'module'=>\app\modules\dms\models\Dmsys::MODULE_PURCHASE,
+        'id'=>$model->id,
+      )); 
+    }
+  ?>
+  <hr>
+
+	<?php $form = ActiveForm::begin(); ?>
+
+		<?php
+
+$dataExp = <<< SCRIPT
+  function (term, page) {
+    return {
+      search: term, // search term
+    };
+  }
+SCRIPT;
+
+$dataResults = <<< SCRIPT
+  function (data, page) {
+    return {
+      results: data.results
+    };
+  }
+SCRIPT;
+
+$url = Html::url(['/parties/party/jsonlist']);
+
+$fInitSelection = <<< SCRIPT
+  function (element, callback) {
+    var id=$(element).val();
+    if (id!=="") {
+      $.ajax("$url&id="+id, {
+        dataType: "json"
+      }).done(function(data) { callback(data.results); });
+    }
+  }
+SCRIPT;
+
+?>
+
+    <?= $form->field($model, 'party_id')->widget(Select2::classname(),[
+          'options' => ['placeholder' => \Yii::t('app','Select supplier ...')],            
+          'addon' => [
+            'append' => [
+              'content' => Html::a(\Yii::t('app','Create'), ['window', 'id' => $model->id, 'win'=>'party_create','mainid'=>$model->id], [
+                'class' => 'btn btn-info',
+                'id' => 'window_party_create'
+              ]),
+              'asButton' => true
+            ]
+          ],
+          'pluginOptions'=>[
+            'minimumInputLength' => 3,
+            'ajax' => [
+              'url' => Html::url(['/parties/party/jsonlist']),
+              'dataType' => 'json',
+              'data' => new JsExpression($dataExp),
+              'results' => new JsExpression($dataResults),
+            ],
+            'initSelection' => new JsExpression($fInitSelection)
+          ]
+    ]); ?>
+
+		<?= $form->field($model, 'name')->textInput(['maxlength' => 255]) ?>
+
+		<?php
+
+$dataExp = <<< SCRIPT
+  function (term, page) {
+    return {
+      search: term, // search term
+    };
+  }
+SCRIPT;
+
+$dataResults = <<< SCRIPT
+  function (data, page) {
+    return {
+      results: data.results
+    };
+  }
+SCRIPT;
+
+$createSearchChoice = <<< SCRIPT
+function(term, data) {
+    if ($(data).filter(function() {
+      return this.text.localeCompare(term) === 0;
+    }).length === 0) {
+      return {
+        id: term,
+        text: term
+      };
+    }
+ }
+SCRIPT;
+
+$tagValues = explode(',', $model->tags);
+$initTagList = [];
+foreach($tagValues AS $tmptag){
+	$initTagList[] = ['id'=>$tmptag, 'text'=>$tmptag];
+}
+
+$jsonTags = Json::encode($initTagList);
+
+$tagInitSelection = <<< SCRIPT
+function (element, callback) {
+  var obj= $jsonTags;
+  callback(obj);
+}
+SCRIPT;
+
+$tagurl = Html::url(['/tags/default/jsonlist']);
+
+?>
+
+    <?= $form->field($model, 'tags')->widget(Select2::classname(),[
+          'options' => ['placeholder' => \Yii::t('app','add tags ...')],
+          'addon' => [
+          	'prepend'=>[
+          		'content' => Html::icon('globe')
+          	]
+          ],
+          'pluginOptions'=>[
+          	'tags' => true,
+          	'tokenSeparators' => [","],
+          	'multiple' => true,
+          	'allowClear' => true,
+          	'createSearchChoice' => new JsExpression($createSearchChoice),
+          	'initSelection' => new JsExpression($tagInitSelection),
+            'ajax' => [
+              'url' => $tagurl,
+              'dataType' => 'json',
+              'data' => new JsExpression($dataExp),
+              'results' => new JsExpression($dataResults),
+            ]
+          ]
+    ]); ?>
+
+		<?= $form->field($model, 'description')->textarea(['rows' => 6]) ?>
+
+		<?= $form->field($model, 'status')->textInput(['maxlength' => 255]) ?>
+
+		<hr>
+
+		<div class="form-group">
+			<?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary pull-right']) ?>
+		</div>
+
+	<?php ActiveForm::end(); ?>
+
+</div>
+
+<?php 
+/*
+<?= $form->field($model, 'creator_id')->textInput() ?>
+
+<?= $form->field($model, 'time_deleted')->textInput() ?>
+
+<?= $form->field($model, 'time_create')->textInput() ?>
+ */
+
