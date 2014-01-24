@@ -1,0 +1,7 @@
+.widget-header {
+  position: relative;
+  min-height: 35px;
+  background: linear-gradient(rgb(255, 255, 255) 0px, rgb(238, 238, 238) 100%) repeat-x rgb(247, 247, 247);
+  border: 0px solid;
+  padding-left: 12px;
+}

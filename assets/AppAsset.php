@@ -22,6 +22,7 @@ class AppAsset extends AssetBundle
 	public $basePath = '@webroot';
 	public $baseUrl = '@web';
 	public $css = [
+		'css/dmpaper.css',
 		'css/site.css',
 		'assets/less/metro-bootstrap.css',
 		'less/metro-bootstrap.less',

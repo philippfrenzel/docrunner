@@ -6,6 +6,7 @@ use Yii;
 
 /**
  * This is the model class for table "tbl_tag".
+ * Inside this table we keep the information of existing tags, all over the application
  *
  * @property integer $id
  * @property string $name
@@ -112,7 +113,7 @@ class Tag extends \yii\db\ActiveRecord
     {
         
         if (count($tags) >0) {
-            $inTags = preg_replace('/(\S+)/i', '\'\1\'', $tags);
+            $inTags = explode(',', $tags);
             $sql = "UPDATE {{tbl_tag}} SET frequency=frequency+1 WHERE name IN (". join(",", $inTags) .' ) ';
             Yii::$app->db->createCommand($sql)->execute();
         
@@ -132,7 +133,7 @@ class Tag extends \yii\db\ActiveRecord
     {
         if(empty($tags))
             return;
-        $inTags = preg_replace('/(\S+)/i', '\'\1\'', $tags);
+        $inTags = explode(',', $tags);
         
         $sql = "UPDATE {{tbl_tag}} SET frequency=frequency-1 WHERE name IN (". join(",", $inTags) .' ) '; 
         Yii::$app->db->createCommand($sql)->execute();

@@ -27,7 +27,7 @@ $this->registerJs($siteJS);
 	<?php 
     if(class_exists('\app\modules\dms\widgets\PortletDms') && Yii::$app->user->isAdvanced){
       echo \app\modules\dms\widgets\PortletDms::widget(array(
-        'module'=>\app\modules\dms\models\Dmsys::MODULE_PURCHASE,
+        'module'=>\app\modules\dms\models\Dmsys::MODULE_DMPAPER,
         'id'=>$model->id,
       )); 
     }

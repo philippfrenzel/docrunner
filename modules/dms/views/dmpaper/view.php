@@ -36,6 +36,7 @@ $this->params['breadcrumbs'][] = $this->title;
 			'creator_id',
 			'time_deleted:datetime',
 			'time_create:datetime',
+			'tags:ntext',
 		],
 	]); ?>
 

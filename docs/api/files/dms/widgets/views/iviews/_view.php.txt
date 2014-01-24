@@ -3,6 +3,7 @@
 use \Yii;
 use yii\helpers\Html;
 use yii\helpers\HtmlPurifier;
+use yii\web\JsExpression;
 use kartik\icons\Icon;
 
 ?>
@@ -26,7 +27,7 @@ use kartik\icons\Icon;
             'id' => 'window_dmsys_update'.$model['id']
           ]); 
 
-          $actionjs = new yii\web\JsExpression("$('#window_dmssys_update".$model['id']."').on('click',myModalWindow);");
+          $actionjs = new JsExpression("$('#window_dmssys_update".$model['id']."').on('click',myModalWindow);");
           $this->registerJs($actionjs);
         ?>
         <div class="pull-right">&nbsp;</div>
@@ -36,7 +37,7 @@ use kartik\icons\Icon;
             'id' => 'window_dmsys_delete'.$model['id']
           ]); 
 
-          $actionjs = new yii\web\JsExpression("$('#window_dmssys_delete".$model['id']."').on('click',myModalWindow);");
+          $actionjs = new JsExpression("$('#window_dmssys_delete".$model['id']."').on('click',myModalWindow);");
           $this->registerJs($actionjs);
         ?>
       </div>

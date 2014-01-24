@@ -6,6 +6,8 @@ use \DateTime;
 use app\modules\tags\models\Tag;
 use app\modules\comments\models\Comment;
 
+use yii\helpers\Html;
+
 /**
  * This is the model class for table "tbl_dmpaper".
  *
@@ -120,6 +122,17 @@ class Dmpaper extends \yii\db\ActiveRecord
 			$links[]=Html::a(Html::encode($tag), array('post/index', 'tag'=>$tag), array('class'=>'label'));
 		return $links;
 	}
+
+  /**
+   * @return array a list of links that point to the post list filtered by every tag of this post
+   */
+  public function getTagLabels()
+  {
+    $labels=array();
+    foreach(Tag::string2array($this->tags) as $tag)
+      $labels[] = Html::tag('span', Html::encode($tag),['class'=>'label label-info pull-right']);
+    return $labels;
+  }
 
 	/**
 	 * Normalizes the user-entered tags.

@@ -112,8 +112,8 @@ class Tag extends \yii\db\ActiveRecord
     public static function addTags($tags)
     {
         
-        if (count($tags) >0) {
-            $inTags = explode(',', $tags);
+        if (count($tags)>0) {
+            $inTags = preg_replace('/(\S+)/i', '\'\1\'', $tags);
             $sql = "UPDATE {{tbl_tag}} SET frequency=frequency+1 WHERE name IN (". join(",", $inTags) .' ) ';
             Yii::$app->db->createCommand($sql)->execute();
         
@@ -133,7 +133,7 @@ class Tag extends \yii\db\ActiveRecord
     {
         if(empty($tags))
             return;
-        $inTags = explode(',', $tags);
+        $inTags = preg_replace('/(\S+)/i', '\'\1\'', $tags);
         
         $sql = "UPDATE {{tbl_tag}} SET frequency=frequency-1 WHERE name IN (". join(",", $inTags) .' ) '; 
         Yii::$app->db->createCommand($sql)->execute();

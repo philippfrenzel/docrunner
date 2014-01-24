@@ -44,9 +44,7 @@ $this->registerJs($siteJS);
       <?php echo ListView::widget([
         'dataProvider' => $dataProvider,
         'itemOptions' => ['class' => 'item'],
-        'itemView' => function ($model, $key, $index, $widget) {
-          return Html::a(Html::encode($model->name), ['/dms/dmpaper/view', 'id' => $model->id]);
-        },
+        'itemView' => '@app/modules/dms/views/dmpaper/iviews/_item',
       ]); ?>      
     </div>
   </div>
