@@ -84,6 +84,7 @@ class Workflow extends ActiveRecord
     const MODULE_REVISION    = 6;
     const MODULE_HOLIDAY     = 7;
     const MODULE_PURCHASE    = 8;
+    const MODULE_DMPAPER     = 9;
 
     public static $appmodules = array(
         self::MODULE_TIMETABLE   => '/timetrack/timetrack',
@@ -94,6 +95,7 @@ class Workflow extends ActiveRecord
         self::MODULE_REVISION    => '/revision/default',
         self::MODULE_HOLIDAY     => '/timetrack/timetrack',
         self::MODULE_PURCHASE    => '/purchase/default',
+        self::MODULE_DMPAPER     => '/dms/default',
     );
 
     public static $appinternals = array(
@@ -101,6 +103,7 @@ class Workflow extends ActiveRecord
         self::MODULE_HOLIDAY => array('table'=>'tbl_time_table','field'=>'category'),
         self::MODULE_TASKS => array('table'=>'tbl_task','field'=>'content'),
         self::MODULE_PURCHASE => array('table'=>'tbl_purchase','field'=>'content'),
+        self::MODULE_DMPAPER => array('table'=>'tbl_dmpaper','field'=>'status'),
     );
 
     public static function getModuleOptions(){
