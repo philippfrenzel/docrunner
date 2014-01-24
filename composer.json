@@ -39,7 +39,10 @@
         "kartik-v/yii2-helpers": "dev-master",
         "2amigos/yii2-file-input-widget" : "*"
 	},
-     "config": {
+    "require-dev": {
+        "phpdocumentor/phpdocumentor": "2.*"
+    },
+    "config": {
         "process-timeout": 1800
     },
 	"scripts": {

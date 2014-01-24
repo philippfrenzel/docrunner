@@ -6,6 +6,6 @@ use yii\helpers\HtmlPurifier;
 ?>
 
 <div class="post-box">
-  <h4 class="fg-color-orange"><?= Html::encode(strtoupper($model->Author->name)); ?>  <small><?= date('Y-m-d h:m',$model->time_create); ?></small></h4>
+  <h4 class="fg-color-orange"><?= Html::encode(strtoupper($model->author->name)); ?>  <small><?= date('Y-m-d h:m',$model->time_create); ?></small></h4>
   <?= HtmlPurifier::process($model->content); ?>
 </div>
