@@ -1,6 +1,8 @@
 <?php
 
 use yii\helpers\Html;
+use yii\widgets\ListView;
+
 use kartik\widgets\SideNav;
 use kartik\icons\Icon; 
 
@@ -32,6 +34,20 @@ $this->registerJs($siteJS);
     </div>
     <div class="col-sm-8 col-md-4">            
       
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-10">
+      <?php echo $this->render('@app/modules/dms/views/dmpaper/_search', ['model' => $searchModel]); ?>
+      <hr>
+      <?php echo ListView::widget([
+        'dataProvider' => $dataProvider,
+        'itemOptions' => ['class' => 'item'],
+        'itemView' => function ($model, $key, $index, $widget) {
+          return Html::a(Html::encode($model->name), ['/dms/dmpaper/view', 'id' => $model->id]);
+        },
+      ]); ?>      
     </div>
   </div>
 

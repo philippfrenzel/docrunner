@@ -7,6 +7,7 @@ use yii\web\AccessControl;
 use yii\web\VerbFilter;
 use app\models\LoginForm;
 use app\models\ContactForm;
+use app\modules\dms\models\DmpaperSearch;
 
 class SiteController extends AppController
 {
@@ -54,7 +55,13 @@ class SiteController extends AppController
 		}
 		else
 		{
-			return $this->render('docrunner');
+			$searchModel = new DmpaperSearch;
+			$dataProvider = $searchModel->search($_GET);
+
+			return $this->render('docrunner', [
+				'dataProvider' => $dataProvider,
+				'searchModel' => $searchModel,
+			]);
 		}
 	}
 
