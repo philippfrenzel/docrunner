@@ -1440,12 +1440,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/twbs/bootstrap.git",
-                "reference": "b9d1ae092f480167aedd009f7f3148f1f53f26a7"
+                "reference": "af1ba5cf74fb695674a166c3c6883bf62e91ceda"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/twbs/bootstrap/zipball/b9d1ae092f480167aedd009f7f3148f1f53f26a7",
-                "reference": "b9d1ae092f480167aedd009f7f3148f1f53f26a7",
+                "url": "https://api.github.com/repos/twbs/bootstrap/zipball/af1ba5cf74fb695674a166c3c6883bf62e91ceda",
+                "reference": "af1ba5cf74fb695674a166c3c6883bf62e91ceda",
                 "shasum": ""
             },
             "type": "library",
@@ -1474,7 +1474,7 @@
                 "bootstrap",
                 "css"
             ],
-            "time": "2014-01-24 01:01:43"
+            "time": "2014-01-25 00:58:54"
         },
         {
             "name": "twitter/typeahead.js",
@@ -1538,12 +1538,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/yiisoft/yii2-framework.git",
-                "reference": "7ac1b74bd2e8ab731082bc49e821be9131872de7"
+                "reference": "b239681d8ae37600d1c0071f83b7646f33155906"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/yii2-framework/zipball/7ac1b74bd2e8ab731082bc49e821be9131872de7",
-                "reference": "7ac1b74bd2e8ab731082bc49e821be9131872de7",
+                "url": "https://api.github.com/repos/yiisoft/yii2-framework/zipball/b239681d8ae37600d1c0071f83b7646f33155906",
+                "reference": "b239681d8ae37600d1c0071f83b7646f33155906",
                 "shasum": ""
             },
             "require": {
@@ -1608,7 +1608,7 @@
                 "framework",
                 "yii"
             ],
-            "time": "2014-01-23 21:43:43"
+            "time": "2014-01-24 21:33:28"
         },
         {
             "name": "yiisoft/yii2-bootstrap",
@@ -2434,12 +2434,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/nikic/PHP-Parser.git",
-                "reference": "bf9956b6345a606a206ba77484d750676e0e5805"
+                "reference": "6f36a88993a07d0ccd52d813ceff27de022429c3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/bf9956b6345a606a206ba77484d750676e0e5805",
-                "reference": "bf9956b6345a606a206ba77484d750676e0e5805",
+                "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/6f36a88993a07d0ccd52d813ceff27de022429c3",
+                "reference": "6f36a88993a07d0ccd52d813ceff27de022429c3",
                 "shasum": ""
             },
             "require": {
@@ -2471,7 +2471,7 @@
                 "parser",
                 "php"
             ],
-            "time": "2014-01-20 16:24:18"
+            "time": "2014-01-24 19:27:42"
         },
         {
             "name": "phpcollection/phpcollection",
@@ -3321,12 +3321,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/Console.git",
-                "reference": "62a18a52e66662bc4bf1edf0b9916b97caad3418"
+                "reference": "47e82eadf64a81e0a778c7249c7292987f1bfcff"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/Console/zipball/62a18a52e66662bc4bf1edf0b9916b97caad3418",
-                "reference": "62a18a52e66662bc4bf1edf0b9916b97caad3418",
+                "url": "https://api.github.com/repos/symfony/Console/zipball/47e82eadf64a81e0a778c7249c7292987f1bfcff",
+                "reference": "47e82eadf64a81e0a778c7249c7292987f1bfcff",
                 "shasum": ""
             },
             "require": {
@@ -3365,7 +3365,7 @@
             ],
             "description": "Symfony Console Component",
             "homepage": "http://symfony.com",
-            "time": "2014-01-07 15:22:10"
+            "time": "2014-01-24 14:36:35"
         },
         {
             "name": "symfony/event-dispatcher",
@@ -3676,12 +3676,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/Translation.git",
-                "reference": "4c0b284dce13c0bf60afc42f1c255cc91f87c82c"
+                "reference": "9c10bbce6bcd255661decff7ac61a03834b8f78d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/Translation/zipball/4c0b284dce13c0bf60afc42f1c255cc91f87c82c",
-                "reference": "4c0b284dce13c0bf60afc42f1c255cc91f87c82c",
+                "url": "https://api.github.com/repos/symfony/Translation/zipball/9c10bbce6bcd255661decff7ac61a03834b8f78d",
+                "reference": "9c10bbce6bcd255661decff7ac61a03834b8f78d",
                 "shasum": ""
             },
             "require": {
@@ -3722,7 +3722,7 @@
             ],
             "description": "Symfony Translation Component",
             "homepage": "http://symfony.com",
-            "time": "2014-01-07 13:29:57"
+            "time": "2014-01-24 14:36:35"
         },
         {
             "name": "symfony/validator",
@@ -3731,12 +3731,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/Validator.git",
-                "reference": "5bf2dc18b733a1e6f4fcd5653448792b092e4e4c"
+                "reference": "0385eb32d99b199a366ff4359535f5c14583e48e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/Validator/zipball/5bf2dc18b733a1e6f4fcd5653448792b092e4e4c",
-                "reference": "5bf2dc18b733a1e6f4fcd5653448792b092e4e4c",
+                "url": "https://api.github.com/repos/symfony/Validator/zipball/0385eb32d99b199a366ff4359535f5c14583e48e",
+                "reference": "0385eb32d99b199a366ff4359535f5c14583e48e",
                 "shasum": ""
             },
             "require": {
@@ -3787,7 +3787,7 @@
             ],
             "description": "Symfony Validator Component",
             "homepage": "http://symfony.com",
-            "time": "2014-01-07 13:29:57"
+            "time": "2014-01-24 14:36:35"
         },
         {
             "name": "twig/twig",
@@ -3795,12 +3795,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/fabpot/Twig.git",
-                "reference": "ae89c8853582f074c1e8f26ac3b67b2c4fff2609"
+                "reference": "9ed963c99d0e5f10eeeb1a135d80389f4a56d866"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/fabpot/Twig/zipball/ae89c8853582f074c1e8f26ac3b67b2c4fff2609",
-                "reference": "ae89c8853582f074c1e8f26ac3b67b2c4fff2609",
+                "url": "https://api.github.com/repos/fabpot/Twig/zipball/9ed963c99d0e5f10eeeb1a135d80389f4a56d866",
+                "reference": "9ed963c99d0e5f10eeeb1a135d80389f4a56d866",
                 "shasum": ""
             },
             "require": {
@@ -3836,7 +3836,7 @@
             "keywords": [
                 "templating"
             ],
-            "time": "2014-01-08 07:21:35"
+            "time": "2014-01-24 15:03:15"
         },
         {
             "name": "zendframework/zend-cache",
