@@ -116,16 +116,18 @@ class Tag extends \yii\db\ActiveRecord
         
         if (count($tags)>0) {
             $inTags = preg_replace('/(\S+)/i', '\'\1\'', $tags);
-            $sql = "UPDATE {{tbl_tag}} SET frequency=frequency+1 WHERE name IN (". join(",", $inTags) .' ) ';
-            Yii::$app->db->createCommand($sql)->execute();
-        
-            foreach($tags as $name) {
-                $model = static::find()->where('name=:name',array(':name'=>$name))->one();
-                if ($model === null) {
-                    $tag=new Tag();
-                    $tag->name=$name;
-                    $tag->frequency=1;
-                    $tag->save();
+            if(join(",", $inTags)!=''){
+                $sql = "UPDATE {{tbl_tag}} SET frequency=frequency+1 WHERE name IN (". join(",", $inTags) .' ) ';
+                Yii::$app->db->createCommand($sql)->execute();
+            
+                foreach($tags as $name) {
+                    $model = static::find()->where('name=:name',array(':name'=>$name))->one();
+                    if ($model === null) {
+                        $tag=new Tag();
+                        $tag->name=$name;
+                        $tag->frequency=1;
+                        $tag->save();
+                    }
                 }
             }
         }
@@ -137,10 +139,12 @@ class Tag extends \yii\db\ActiveRecord
             return;
         $inTags = preg_replace('/(\S+)/i', '\'\1\'', $tags);
         
-        $sql = "UPDATE {{tbl_tag}} SET frequency=frequency-1 WHERE name IN (". join(",", $inTags) .' ) '; 
-        Yii::$app->db->createCommand($sql)->execute();
+        if(join(",", $inTags)!=''){
+            $sql = "UPDATE {{tbl_tag}} SET frequency=frequency-1 WHERE name IN (". join(",", $inTags) .' ) '; 
+            Yii::$app->db->createCommand($sql)->execute();
 
-        $sql = "DELETE FROM {{tbl_tag}} WHERE frequency<=0";
-        Yii::$app->db->createCommand($sql)->execute();
+            $sql = "DELETE FROM {{tbl_tag}} WHERE frequency<=0";
+            Yii::$app->db->createCommand($sql)->execute();
+        }
     }
 }
