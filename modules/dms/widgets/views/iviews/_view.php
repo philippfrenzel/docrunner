@@ -10,38 +10,30 @@ use kartik\icons\Icon;
 
 <li class="media">
   <a href="<?= Html::url(['/dms/default/downloadattachement','id'=>$model['id']]); ?>" target='_blank' class="pull-left">
-    <img src="<?= Html::Url(['/dms/default/getthumb','id'=>$model['id']]); ?>" alt="thumb"/>
-    <?= $model['filetype']; ?>
+    <img src="<?= Html::Url(['/dms/default/getthumb','id'=>$model['id']]); ?>" alt="thumb"/> 
   </a>
   <div class="media-body">
     <h4 class="media-heading"><?= $model['filename']; ?></h4>
-    <div class="row">
-      <div class="col-md-6">
-        <small><?= $model['used_space']; ?></small>
-        <?= $model['status']; ?>
-      </div>
-      <div class="col-md-6">
-        <?php 
-          echo Html::a(Icon::show('pencil', ['class'=>'fa'], Icon::FA) . ' ' . \Yii::t('app','Update'), ['/dms/default/window', 'id' => $model['id'], 'win'=>'dmsys_update','mainid'=>$model['id']], [
-            'class' => 'btn btn-default navbar-btn navbar-right',
-            'id' => 'window_dmsys_update'.$model['id']
-          ]); 
+    <small><?= $model['used_space']; ?></small>
+    <?= $model['status']; ?>
+    <?php 
+      echo Html::a(Icon::show('pencil', ['class'=>'fa'], Icon::FA) . ' ' . \Yii::t('app','Update'), ['/dms/default/window', 'id' => $model['id'], 'win'=>'dmsys_update','mainid'=>$model['id']], [
+        'class' => 'btn btn-default navbar-btn navbar-right',
+        'id' => 'window_dmsys_update'.$model['id']
+      ]); 
 
-          $actionjs = new JsExpression("$('#window_dmsys_update".$model['id']."').on('click',myModalWindow);");
-          $this->registerJs($actionjs);
-        ?>
-        <div class="pull-right">&nbsp;</div>
-        <?php 
-          echo Html::a(Icon::show('trash-o', ['class'=>'fa'], Icon::FA) . ' ' . \Yii::t('app','Delete'), ['/dms/default/window', 'id' => $model['id'], 'win'=>'dmsys_delete','mainid'=>NULL], [
-            'class' => 'btn btn-default navbar-btn navbar-right',
-            'id' => 'window_dmsys_delete'.$model['id']
-          ]); 
+      $actionjs = new JsExpression("$('#window_dmsys_update".$model['id']."').on('click',myModalWindow);");
+      $this->registerJs($actionjs);
+    ?>
+    <div class="pull-right">&nbsp;</div>
+    <?php 
+      echo Html::a(Icon::show('trash-o', ['class'=>'fa'], Icon::FA) . ' ' . \Yii::t('app','Delete'), ['/dms/default/window', 'id' => $model['id'], 'win'=>'dmsys_delete','mainid'=>NULL], [
+        'class' => 'btn btn-default navbar-btn navbar-right',
+        'id' => 'window_dmsys_delete'.$model['id']
+      ]); 
 
-          $actionjs = new JsExpression("$('#window_dmsys_delete".$model['id']."').on('click',myModalWindow);");
-          $this->registerJs($actionjs);
-        ?>
-      </div>
-    </div>
+      $actionjs = new JsExpression("$('#window_dmsys_delete".$model['id']."').on('click',myModalWindow);");
+      $this->registerJs($actionjs);
+    ?>
   </div>
-
 </li>

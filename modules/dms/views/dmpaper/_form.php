@@ -25,7 +25,7 @@ $this->registerJs($siteJS);
 <div class="dmpaper-form">
 
   <div class="row">
-    <div class="col-md-4">
+    <div class="col-md-5">
       <?php 
         if(class_exists('\app\modules\dms\widgets\PortletDms') && Yii::$app->user->isAdvanced){
           echo \app\modules\dms\widgets\PortletDms::widget(array(
@@ -35,7 +35,7 @@ $this->registerJs($siteJS);
         }
       ?>
     </div>
-    <div class="col-md-8">
+    <div class="col-md-7">
       <?php $form = ActiveForm::begin(); ?>
       <?php
 
@@ -167,8 +167,6 @@ $tagurl = Html::url(['/tags/default/jsonlist']);
             ]
           ]
     ]); ?>
-    </div>    
-  </div>	
 
     <?php
 
@@ -243,6 +241,8 @@ $contacturl = Html::url(['/parties/contact/jsonlistemail']);
             ]
           ]
     ]); ?>
+    </div>    
+  </div>	
 
     <?= $form->field($model, 'description')->textarea(['rows' => 6]) ?>
 
