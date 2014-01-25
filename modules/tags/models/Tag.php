@@ -106,7 +106,9 @@ class Tag extends \yii\db\ActiveRecord
         $oldTags=self::string2array($oldTags);
         $newTags=self::string2array($newTags);
         self::addTags(array_values(array_diff($newTags,$oldTags)));
-        self::removeTags(array_values(array_diff($oldTags,$newTags)));
+        if(count($oldTags)>0){
+            self::removeTags(array_values(array_diff($oldTags,$newTags)));    
+        }
     }
 
     public static function addTags($tags)
