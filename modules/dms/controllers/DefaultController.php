@@ -138,7 +138,7 @@ class DefaultController extends Controller
     $model = Dmsys::find($id);
 
     // open the file in a binary mode
-    $name = \Yii::$app->basePath."/attachements/".$model->dms_module."/".$model->id;
+    $name = \Yii::$app->basePath."/attachements/".$model->dms_module."/".$model->id."_thumb_".$size.".jpg";
     $fp = fopen($name, 'rb');
 
     // send the right headers

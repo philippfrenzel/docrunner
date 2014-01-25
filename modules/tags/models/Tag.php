@@ -131,7 +131,7 @@ class Tag extends \yii\db\ActiveRecord
 
     public static function removeTags($tags)
     {
-        if(empty($tags))
+        if(count($tags)==0)
             return;
         $inTags = preg_replace('/(\S+)/i', '\'\1\'', $tags);
         

@@ -24,19 +24,20 @@ $this->registerJs($siteJS);
 
 <div class="dmpaper-form">
 
-	<?php 
-    if(class_exists('\app\modules\dms\widgets\PortletDms') && Yii::$app->user->isAdvanced){
-      echo \app\modules\dms\widgets\PortletDms::widget(array(
-        'module'=>\app\modules\dms\models\Dmsys::MODULE_DMPAPER,
-        'id'=>$model->id,
-      )); 
-    }
-  ?>
-  <hr>
-
-	<?php $form = ActiveForm::begin(); ?>
-
-		<?php
+  <div class="row">
+    <div class="col-md-4">
+      <?php 
+        if(class_exists('\app\modules\dms\widgets\PortletDms') && Yii::$app->user->isAdvanced){
+          echo \app\modules\dms\widgets\PortletDms::widget(array(
+            'module'=>\app\modules\dms\models\Dmsys::MODULE_DMPAPER,
+            'id'=>$model->id,
+          )); 
+        }
+      ?>
+    </div>
+    <div class="col-md-8">
+      <?php $form = ActiveForm::begin(); ?>
+      <?php
 
 $dataExp = <<< SCRIPT
   function (term, page) {
@@ -92,9 +93,9 @@ SCRIPT;
           ]
     ]); ?>
 
-		<?= $form->field($model, 'name')->textInput(['maxlength' => 255]) ?>
+    <?= $form->field($model, 'name')->textInput(['maxlength' => 255]) ?>
 
-		<?php
+    <?php
 
 $dataExp = <<< SCRIPT
   function (term, page) {
@@ -128,7 +129,7 @@ SCRIPT;
 $tagValues = explode(',', $model->tags);
 $initTagList = [];
 foreach($tagValues AS $tmptag){
-	$initTagList[] = ['id'=>$tmptag, 'text'=>$tmptag];
+  $initTagList[] = ['id'=>$tmptag, 'text'=>$tmptag];
 }
 
 $jsonTags = Json::encode($initTagList);
@@ -147,17 +148,17 @@ $tagurl = Html::url(['/tags/default/jsonlist']);
     <?= $form->field($model, 'tags')->widget(Select2::classname(),[
           'options' => ['placeholder' => \Yii::t('app','add tags ...')],
           'addon' => [
-          	'prepend'=>[
-          		'content' => Html::icon('globe')
-          	]
+            'prepend'=>[
+              'content' => Html::icon('globe')
+            ]
           ],
           'pluginOptions'=>[
-          	'tags' => true,
-          	'tokenSeparators' => [","],
-          	'multiple' => true,
-          	'allowClear' => true,
-          	'createSearchChoice' => new JsExpression($createSearchChoice),
-          	'initSelection' => new JsExpression($tagInitSelection),
+            'tags' => true,
+            'tokenSeparators' => [","],
+            'multiple' => true,
+            'allowClear' => true,
+            'createSearchChoice' => new JsExpression($createSearchChoice),
+            'initSelection' => new JsExpression($tagInitSelection),
             'ajax' => [
               'url' => $tagurl,
               'dataType' => 'json',
@@ -166,8 +167,8 @@ $tagurl = Html::url(['/tags/default/jsonlist']);
             ]
           ]
     ]); ?>
-
-		<?= $form->field($model, 'description')->textarea(['rows' => 6]) ?>
+    </div>    
+  </div>	
 
     <?php
 
@@ -242,6 +243,8 @@ $contacturl = Html::url(['/parties/contact/jsonlistemail']);
             ]
           ]
     ]); ?>
+
+    <?= $form->field($model, 'description')->textarea(['rows' => 6]) ?>
 
 		<?php // $form->field($model, 'status')->textInput(['maxlength' => 255]) ?>
 

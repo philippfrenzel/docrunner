@@ -7,7 +7,7 @@ use yii\helpers\Html;
  * @var app\modules\dms\models\Dmpaper $model
  */
 
-$this->title = 'ADD DMPaper';
+$this->title = \Yii::t('app','Add Paper');
 $this->params['breadcrumbs'][] = ['label' => 'Dmpapers', 'url' => ['index']];
 //$this->params['breadcrumbs'][] = ['label' => $model->name, 'url' => ['view', 'id' => $model->id]];
 //$this->params['breadcrumbs'][] = 'Update';

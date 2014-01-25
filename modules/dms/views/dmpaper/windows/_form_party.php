@@ -25,8 +25,8 @@ $('#submitPartyCreate').on('click',function(event){
   {
     type : "POST",
     success: function(data){
-      $('#purchaseorderline-party_id').val(data.model.id);
-      $('#select2-chosen-2').html(data.model.organisationName);
+      $('#dmpaper-party_id').val(data.model.id);
+      $('#select2-chosen-1').html(data.model.organisationName);
       $('#applicationModal').modal('hide');
     }
   });
