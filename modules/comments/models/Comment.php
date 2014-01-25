@@ -135,7 +135,7 @@ class Comment extends ActiveRecord
 	 */
 	public static function findRecentComments($module,$id,$limit=10)
 	{
-		return static::find()->where('status="'.Workflow::STATUS_APPROVED.'" AND comment_table = '.$module.' AND comment_id = '.$id)
+		return static::find()->where('status IN ("'.Workflow::STATUS_APPROVED.'","'.Workflow::STATUS_CREATED.'") AND comment_table = '.$module.' AND comment_id = '.$id)
 					->orderBy('time_create DESC')
 					->limit($limit)
 					->with('post');
@@ -166,7 +166,7 @@ class Comment extends ActiveRecord
 	 */
 	public static function getAdapterForCommentCount($module,$id)
 	{
-		return static::find()->where('status="'.Workflow::STATUS_APPROVED.'" AND comment_table = '.$module.' AND comment_id = '.$id)->Count();
+		return static::find()->where('status IN ("'.Workflow::STATUS_APPROVED.'","'.Workflow::STATUS_CREATED.'") AND comment_table = '.$module.' AND comment_id = '.$id)->Count();
 	}
 
 }

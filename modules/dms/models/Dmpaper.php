@@ -4,6 +4,7 @@ namespace app\modules\dms\models;
 
 use \DateTime;
 use app\modules\tags\models\Tag;
+use app\modules\parties\models\Contact;
 use app\modules\comments\models\Comment;
 
 use yii\helpers\Html;
@@ -33,11 +34,14 @@ class Dmpaper extends \yii\db\ActiveRecord
 		return 'tbl_dmpaper';
 	}
 
+  public $recipients = NULL;
+
 	/**
 	 * storing the old tags into this variable
 	 * @var [type]
 	 */
 	private $_oldTags;
+  private $_oldRecipients;
 
 	/**
 	 * @inheritdoc
@@ -51,6 +55,7 @@ class Dmpaper extends \yii\db\ActiveRecord
 			[['name', 'status'], 'string', 'max' => 255],
 			['tags', 'match', 'pattern'=>'/^[\w\s,]+$/', 'message'=>'Tags can only contain word characters.'],
 			['tags', 'normalizeTags'],
+      ['recipients', 'normalizeRecipients'],
 		];
 	}
 
@@ -130,7 +135,7 @@ class Dmpaper extends \yii\db\ActiveRecord
   {
     $labels=array();
     foreach(Tag::string2array($this->tags) as $tag)
-      $labels[] = Html::tag('span', Html::encode($tag),['class'=>'label label-info pull-right']);
+      $labels[] = Html::tag('div', Html::encode($tag),['class'=>'label label-info']);
     return $labels;
   }
 
@@ -142,6 +147,14 @@ class Dmpaper extends \yii\db\ActiveRecord
 		$this->tags=Tag::array2string(array_unique(Tag::string2array($this->tags)));
 	}
 
+  /**
+   * Normalizes the user-entered recipients.
+   */
+  public function normalizeRecipients($attribute,$params)
+  {
+    $this->recipients = Contact::array2string(array_unique(Contact::string2array($this->recipients)));
+  }
+
 	/**
 	 * This is invoked when a record is populated with data from a find() call.
 	 */
@@ -149,6 +162,7 @@ class Dmpaper extends \yii\db\ActiveRecord
 	{
 		parent::afterFind();
 		$this->_oldTags=$this->tags;
+    $this->_oldRecipients=$this->recipients;
 	}
 
 	/**

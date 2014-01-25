@@ -169,7 +169,81 @@ $tagurl = Html::url(['/tags/default/jsonlist']);
 
 		<?= $form->field($model, 'description')->textarea(['rows' => 6]) ?>
 
-		<?= $form->field($model, 'status')->textInput(['maxlength' => 255]) ?>
+    <?php
+
+$dataExp = <<< SCRIPT
+  function (term, page) {
+    return {
+      search: term, // search term
+    };
+  }
+SCRIPT;
+
+$dataResults = <<< SCRIPT
+  function (data, page) {
+    return {
+      results: data.results
+    };
+  }
+SCRIPT;
+
+$createSearchChoice = <<< SCRIPT
+function(term, data) {
+    if ($(data).filter(function() {
+      return this.text.localeCompare(term) === 0;
+    }).length === 0) {
+      return {
+        id: term,
+        text: term
+      };
+    }
+ }
+SCRIPT;
+
+$tagValues = explode(',', $model->tags);
+$initTagList = [];
+foreach($tagValues AS $tmptag){
+  $initTagList[] = ['id'=>$tmptag, 'text'=>$tmptag];
+}
+
+$jsonTags = Json::encode($initTagList);
+
+$tagInitSelection = <<< SCRIPT
+function (element, callback) {
+  var obj= $jsonTags;
+  callback(obj);
+}
+SCRIPT;
+
+$contacturl = Html::url(['/parties/contact/jsonlistemail']);
+
+?>
+
+    <?= $form->field($model, 'recipients')->widget(Select2::classname(),[
+          'options' => ['placeholder' => \Yii::t('app','add recipients ...')],
+          'addon' => [
+            'prepend'=>[
+              'content' => Html::icon('user')
+            ]
+          ],
+          'pluginOptions'=>[
+            'tags' => true,
+            'tokenSeparators' => [","],
+            'multiple' => true,
+            'allowClear' => true,
+            'minimumInputLength' => 2,
+            'createSearchChoice' => new JsExpression($createSearchChoice),
+            'initSelection' => new JsExpression($tagInitSelection),
+            'ajax' => [
+              'url' => $contacturl,
+              'dataType' => 'json',
+              'data' => new JsExpression($dataExp),
+              'results' => new JsExpression($dataResults),
+            ]
+          ]
+    ]); ?>
+
+		<?php // $form->field($model, 'status')->textInput(['maxlength' => 255]) ?>
 
 		<hr>
 

@@ -6,15 +6,13 @@ use yii\helpers\HtmlPurifier;
 use yii\web\JsExpression;
 use kartik\icons\Icon;
 
-use \phpthumb;
-
 ?>
 
 <div class="dmpaper">
   <div class="widget-header">
     <div class="row">
       <div class="col-md-9">
-        <h5><?= $model['name']; ?></h5>
+        <h5>DocId #<?= $model['id']; ?> <?= $model['name']; ?></h5>
       </div>
       <div class="col-md-3">
         <div class="pull-right">
@@ -27,32 +25,28 @@ use \phpthumb;
   </div>
   <div class="widget-body">
     <div class="row">
-      <div class="col-md-6">
-        <div class="pull-left">
-          <?php
-            //testing the pdf thumb generator
-            $filename = "http://www.education.gov.yk.ca/pdf/pdf-test.pdf";
-            
-            $thumbler = new phpthumb();
-            $thumbler->setSourceData(file_get_contents($filename));
-            $thumbler->setParameter('w', '100');
-            
-            $output_filename = \Yii::$app->basePath."/attachements/thumb_small.jpg";
-            if ($thumbler->GenerateThumbnail()) { // this line is VERY important, do not remove it!
-                if ($thumbler->RenderToFile($output_filename)) {
-                        // do something on success
-                        echo 'Successfully rendered to "'.$output_filename.'"';
-                } else {
-                        // do something with debug/error messages
-                        echo 'Failed:<pre>'.implode("\n\n", $thumbler->debugmessages).'</pre>';
-                }
-                $thumbler->purgeTempFiles();
-            }
-          ?>
-        </div>
+      <div class="col-md-2">
+        <img src="<?php // Html::Url(['/dms/default/getthumb','id'=>$model['id']]); ?>" alt="thumb"/>
+      </div>
+      <div class="col-md-4">          
+        <a href="<?= Html::Url(['/dms/dmpaper/update','id'=>$model['id']]); ?>" class="btn btn-default">
+          <?= Icon::show('pencil', ['class'=>'fa'], Icon::FA);?><?= Yii::t('app','update'); ?>                
+        </a>
         <blockquote>
-          <?= $model['description']; ?>
+          <p><?= $model['description']; ?></p>
         </blockquote>
+
+        <?php 
+          if(class_exists('\app\modules\comments\widgets\PortletCommentsBatch')){
+            echo \app\modules\comments\widgets\PortletCommentsBatch::widget(array(
+              'module'      => \app\modules\workflow\models\Workflow::MODULE_DMPAPER,
+              'id'          => $model['id'],
+              'title'       => \Yii::t('app','Comments'),
+              'htmlOptions' => array('class'=>'nothing'),
+            )); 
+          }
+        ?>
+
       </div>
       <div class="col-md-4">
         

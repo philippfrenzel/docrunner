@@ -248,5 +248,4 @@ class ContactController extends AppController
     exit();
   }
 
-
 }

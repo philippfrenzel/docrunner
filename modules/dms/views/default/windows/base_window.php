@@ -1,10 +1,6 @@
 <?php
 
 use yii\helpers\Html;
-use app\modules\comments\widgets\PortletComments;
-
-$this->assetBundles['yii\web\YiiAsset'] = new yii\web\AssetBundle;;
-$this->assetBundles['yii\web\JqueryAsset'] = new yii\web\AssetBundle;;
 
 ?>
 
@@ -20,10 +16,9 @@ $this->assetBundles['yii\web\JqueryAsset'] = new yii\web\AssetBundle;;
    <?php $this->beginBody(); ?>
 
     
-<?= PortletComments::widget(array(
-  'module'=>$module,
-  'id'=>$id,
-)); ?>
+    <?php echo $this->render($showform, [
+      'model' => $model,
+    ]); ?>
 
 
 <?php $this->endBody(); ?>

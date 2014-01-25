@@ -1,7 +1,11 @@
 <?php
 
-use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use kartik\helpers\Html;
+use kartik\widgets\Select2;
+
+use yii\web\JsExpression;
+use yii\helpers\Json;
 
 /**
  * @var yii\web\View $this
@@ -18,7 +22,55 @@ use yii\widgets\ActiveForm;
 	]); ?>
 
 	<div class="row">
-		<div class="col-md-4"><?= $form->field($model, 'party_id') ?></div>
+		<div class="col-md-4">
+			<?php
+
+$dataExp = <<< SCRIPT
+  function (term, page) {
+    return {
+      search: term, // search term
+    };
+  }
+SCRIPT;
+
+$dataResults = <<< SCRIPT
+  function (data, page) {
+    return {
+      results: data.results
+    };
+  }
+SCRIPT;
+
+$url = Html::url(['/parties/party/jsonlist']);
+
+$fInitSelection = <<< SCRIPT
+  function (element, callback) {
+    var id=$(element).val();
+    if (id!=="") {
+      $.ajax("$url&id="+id, {
+        dataType: "json"
+      }).done(function(data) { callback(data.results); });
+    }
+  }
+SCRIPT;
+
+?>
+
+    <?= $form->field($model, 'party_id')->widget(Select2::classname(),[
+          'options' => ['placeholder' => \Yii::t('app','Search supplier ...')],
+          'pluginOptions'=>[
+            'minimumInputLength' => 3,
+            'ajax' => [
+              'url' => Html::url(['/parties/party/jsonlist']),
+              'dataType' => 'json',
+              'data' => new JsExpression($dataExp),
+              'results' => new JsExpression($dataResults),
+            ],
+            'initSelection' => new JsExpression($fInitSelection)
+          ]
+    ]); ?>
+
+		</div>
 		<div class="col-md-4"><?= $form->field($model, 'name') ?></div>
 		<div class="col-md-4"><?= $form->field($model, 'status') ?></div>
 	</div>		

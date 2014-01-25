@@ -132,4 +132,24 @@ class Contact extends \yii\db\ActiveRecord
     $this->system_upate = $date->format("U");
     return parent::beforeSave($insert);
   }
+
+  /**
+   * [string2array description]
+   * @param  [type] $recipients [description]
+   * @return [type]       [description]
+   */
+  public static function string2array($recipients)
+  {
+      return explode(',',trim($recipients));
+  }
+
+  /**
+   * [array2string description]
+   * @param  [type] $recipients [description]
+   * @return [type]       [description]
+   */
+  public static function array2string($recipients)
+  {
+      return implode(',',$recipients);
+  }
 }

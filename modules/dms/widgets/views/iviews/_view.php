@@ -22,22 +22,22 @@ use kartik\icons\Icon;
       </div>
       <div class="col-md-6">
         <?php 
-          echo Html::a(Icon::show('pencil', ['class'=>'fa'], Icon::FA) . ' ' . \Yii::t('app','Update'), ['/dmsys/default/window', 'id' => $model['id'], 'win'=>'dmsys_update','mainid'=>$model['id']], [
+          echo Html::a(Icon::show('pencil', ['class'=>'fa'], Icon::FA) . ' ' . \Yii::t('app','Update'), ['/dms/default/window', 'id' => $model['id'], 'win'=>'dmsys_update','mainid'=>$model['id']], [
             'class' => 'btn btn-default navbar-btn navbar-right',
             'id' => 'window_dmsys_update'.$model['id']
           ]); 
 
-          $actionjs = new JsExpression("$('#window_dmssys_update".$model['id']."').on('click',myModalWindow);");
+          $actionjs = new JsExpression("$('#window_dmsys_update".$model['id']."').on('click',myModalWindow);");
           $this->registerJs($actionjs);
         ?>
         <div class="pull-right">&nbsp;</div>
         <?php 
-          echo Html::a(Icon::show('trash-o', ['class'=>'fa'], Icon::FA) . ' ' . \Yii::t('app','Delete'), ['/dmsys/default/window', 'id' => $model['id'], 'win'=>'dmsys_delete','mainid'=>NULL], [
+          echo Html::a(Icon::show('trash-o', ['class'=>'fa'], Icon::FA) . ' ' . \Yii::t('app','Delete'), ['/dms/default/window', 'id' => $model['id'], 'win'=>'dmsys_delete','mainid'=>NULL], [
             'class' => 'btn btn-default navbar-btn navbar-right',
             'id' => 'window_dmsys_delete'.$model['id']
           ]); 
 
-          $actionjs = new JsExpression("$('#window_dmssys_delete".$model['id']."').on('click',myModalWindow);");
+          $actionjs = new JsExpression("$('#window_dmsys_delete".$model['id']."').on('click',myModalWindow);");
           $this->registerJs($actionjs);
         ?>
       </div>
