@@ -10,7 +10,7 @@ use kartik\icons\Icon;
 
 <li class="media">
   <a href="<?= Html::url(['/dms/default/downloadattachement','id'=>$model['id']]); ?>" target='_blank' class="pull-left">
-    <img src="<?php Html::Url(['/dms/default/getthumb','id'=>$model['id']]); ?>" alt="thumb"/>
+    <img src="<?= Html::Url(['/dms/default/getthumb','id'=>$model['id']]); ?>" alt="thumb"/>
     <?= $model['filetype']; ?>
   </a>
   <div class="media-body">
