@@ -37,7 +37,8 @@
         "kartik-v/yii2-icons": "dev-master",
         "kartik-v/yii2-widgets": "dev-master",
         "kartik-v/yii2-helpers": "dev-master",
-        "2amigos/yii2-file-input-widget" : "*"
+        "2amigos/yii2-file-input-widget" : "*",
+        "jamesheinrich/phpthumb": "dev-master"
 	},
     "require-dev": {
         "phpdocumentor/phpdocumentor": "2.*"

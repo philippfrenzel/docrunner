@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "b6e8d0599416023e5267336d96eda1b2",
+    "hash": "7da5bf122475265fce247dc39d723acb",
     "packages": [
         {
             "name": "2amigos/yii2-file-input-widget",
@@ -230,6 +230,57 @@
             "time": "2013-11-05 12:35:21"
         },
         {
+            "name": "jamesheinrich/phpthumb",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/JamesHeinrich/phpThumb.git",
+                "reference": "5844f7d1b29d4299b206a4ab063a17af5ce704f6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/JamesHeinrich/phpThumb/zipball/5844f7d1b29d4299b206a4ab063a17af5ce704f6",
+                "reference": "5844f7d1b29d4299b206a4ab063a17af5ce704f6",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=4.3.3"
+            },
+            "suggest": {
+                "ext-gd": "PHP GD library",
+                "ext-imagick": "PHP ImageMagick"
+            },
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "phpthumb.class.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL"
+            ],
+            "authors": [
+                {
+                    "name": "James Heinrich",
+                    "email": "info@silisoftware.com",
+                    "homepage": "http://www.silisoftware.com/",
+                    "role": "Developer"
+                }
+            ],
+            "description": "The PHP thumbnail generator",
+            "homepage": "http://phpthumb.sourceforge.net/",
+            "keywords": [
+                "ImageMagick",
+                "gd",
+                "image",
+                "magic",
+                "thumb",
+                "thumbnail"
+            ],
+            "time": "2013-12-04 15:01:31"
+        },
+        {
             "name": "kartik-v/yii2-helpers",
             "version": "dev-master",
             "source": {
@@ -376,12 +427,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/KnpLabs/Gaufrette.git",
-                "reference": "a01503c7a95a84fe0fa10822876866e01a1bbeed"
+                "reference": "0e4d662853b59b60a818f8748558a124740e1d35"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/KnpLabs/Gaufrette/zipball/a01503c7a95a84fe0fa10822876866e01a1bbeed",
-                "reference": "a01503c7a95a84fe0fa10822876866e01a1bbeed",
+                "url": "https://api.github.com/repos/KnpLabs/Gaufrette/zipball/0e4d662853b59b60a818f8748558a124740e1d35",
+                "reference": "0e4d662853b59b60a818f8748558a124740e1d35",
                 "shasum": ""
             },
             "require": {
@@ -451,7 +502,7 @@
                 "filesystem",
                 "media"
             ],
-            "time": "2014-01-20 15:44:30"
+            "time": "2014-01-25 11:40:56"
         },
         {
             "name": "leafo/lessphp",
@@ -1440,12 +1491,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/twbs/bootstrap.git",
-                "reference": "af1ba5cf74fb695674a166c3c6883bf62e91ceda"
+                "reference": "6d090e243dba41bf23dde5496202e0f6f1f4ab61"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/twbs/bootstrap/zipball/af1ba5cf74fb695674a166c3c6883bf62e91ceda",
-                "reference": "af1ba5cf74fb695674a166c3c6883bf62e91ceda",
+                "url": "https://api.github.com/repos/twbs/bootstrap/zipball/6d090e243dba41bf23dde5496202e0f6f1f4ab61",
+                "reference": "6d090e243dba41bf23dde5496202e0f6f1f4ab61",
                 "shasum": ""
             },
             "type": "library",
@@ -1474,7 +1525,7 @@
                 "bootstrap",
                 "css"
             ],
-            "time": "2014-01-25 00:58:54"
+            "time": "2014-01-25 06:36:05"
         },
         {
             "name": "twitter/typeahead.js",
@@ -1538,12 +1589,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/yiisoft/yii2-framework.git",
-                "reference": "b239681d8ae37600d1c0071f83b7646f33155906"
+                "reference": "b1431025e6411afb68d39f80db4c821fb5f44228"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/yii2-framework/zipball/b239681d8ae37600d1c0071f83b7646f33155906",
-                "reference": "b239681d8ae37600d1c0071f83b7646f33155906",
+                "url": "https://api.github.com/repos/yiisoft/yii2-framework/zipball/b1431025e6411afb68d39f80db4c821fb5f44228",
+                "reference": "b1431025e6411afb68d39f80db4c821fb5f44228",
                 "shasum": ""
             },
             "require": {
@@ -1608,7 +1659,7 @@
                 "framework",
                 "yii"
             ],
-            "time": "2014-01-24 21:33:28"
+            "time": "2014-01-25 10:07:07"
         },
         {
             "name": "yiisoft/yii2-bootstrap",
@@ -4349,7 +4400,8 @@
         "dektrium/yii2-user": 20,
         "kartik-v/yii2-icons": 20,
         "kartik-v/yii2-widgets": 20,
-        "kartik-v/yii2-helpers": 20
+        "kartik-v/yii2-helpers": 20,
+        "jamesheinrich/phpthumb": 20
     },
     "platform": {
         "php": ">=5.4.0"
