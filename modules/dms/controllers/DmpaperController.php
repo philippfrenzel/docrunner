@@ -4,14 +4,14 @@ namespace app\modules\dms\controllers;
 
 use app\modules\dms\models\Dmpaper;
 use app\modules\dms\models\DmpaperSearch;
-use yii\web\Controller;
+use app\controllers\AppController;
 use yii\web\NotFoundHttpException;
 use yii\web\VerbFilter;
 
 /**
  * DmpaperController implements the CRUD actions for Dmpaper model.
  */
-class DmpaperController extends Controller
+class DmpaperController extends AppController
 {
 	public function behaviors()
 	{

@@ -6,14 +6,14 @@ use app\modules\comments\models\Comment;
 use app\modules\comments\models\CommentSearch;
 
 use yii\data\ActiveDataProvider;
-use yii\web\Controller;
+use app\controllers\AppController;
 use yii\web\HttpException;
 use yii\web\VerbFilter;
 
 /**
  * CommentController implements the CRUD actions for Comment model.
  */
-class CommentController extends Controller
+class CommentController extends AppController
 {
 	public function behaviors()
 	{

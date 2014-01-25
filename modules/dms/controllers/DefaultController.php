@@ -3,7 +3,7 @@
 namespace app\modules\dms\controllers;
 
 use app\modules\dms\models\Dmsys;
-use yii\web\Controller;
+use app\controllers\AppController;
 use yii\web\VerbFilter;
 
 use yii\helpers\Json;
@@ -13,7 +13,7 @@ use yii\web\UploadedFile;
 use \phpthumb;
 
 
-class DefaultController extends Controller
+class DefaultController extends AppController
 {
   public function behaviors()
   {

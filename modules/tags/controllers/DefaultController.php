@@ -2,7 +2,7 @@
 
 namespace app\modules\tags\controllers;
 
-use yii\web\Controller; 
+use app\controllers\AppController;
 use yii\db\Query;
 use yii\helpers\Json;
 
@@ -12,7 +12,7 @@ use yii\helpers\Json;
  * The default action is index
  */
 
-class DefaultController extends Controller
+class DefaultController extends AppController
 {
 	public function actionIndex()
 	{
