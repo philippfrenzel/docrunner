@@ -135,7 +135,7 @@ class Dmpaper extends \yii\db\ActiveRecord
   {
     $labels=array();
     foreach(Tag::string2array($this->tags) as $tag)
-      $labels[] = Html::tag('div', Html::encode($tag),['class'=>'label label-info']);
+      $labels[] = Html::tag('div', Html::encode($tag),['class'=>'label label-default']);
     return $labels;
   }
 
