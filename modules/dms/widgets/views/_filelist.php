@@ -19,8 +19,7 @@ $this->registerJs($initbookingJS);
 ?>
 
 <blockquote>
-  <p><?= \Yii::t('app','Here you can attach/download files to/from the record') ?></p>
-  <small><?= \Yii::t('app','files are stored secure and only accessible to registered users!') ?></small>
+  <small><?= \Yii::t('app','Here you can attach/download files to/from the record') ?></small>
 </blockquote>
 
 
